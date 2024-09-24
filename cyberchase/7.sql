@@ -1,2 +1,2 @@
-SELECT "title" FROM "episodes"
-WHERE "topic" LIKE "% Fractions %" OR "topic" = 'Fraction';
+SELECT "title", "topic" FROM "episodes"
+WHERE "topic" LIKE '%Fractions%';
