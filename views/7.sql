@@ -1,4 +1,3 @@
-SELECT "brightness"
+SELECT "brightness", ROW_NUMBER() OVER (ORDER BY "brightness" DESC)
 FROM "views"
-WHERE "artist" = 'Hiroshige'
-AND ORDER BY "brightness" ASC;
+WHERE "artist" = 'Hiroshige';
