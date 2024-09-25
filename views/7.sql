@@ -1,3 +1,5 @@
-SELECT "brightness", ROW_NUMBER() OVER (ORDER BY "brightness" DESC)
+SELECT "brightness"
 FROM "views"
-WHERE "artist" = 'Hiroshige';
+WHERE "artist" = 'Hiroshige'
+ORDER BY "brightness" DESC
+LIMIT 5;
