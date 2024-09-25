@@ -1,3 +1,3 @@
-SELECT "average_color", "english_title"
+SELECT "average_color"
 FROM "views"
 WHERE "english_title" LIKE '%river%';
