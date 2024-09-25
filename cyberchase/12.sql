@@ -1,2 +1,2 @@
 SELECT COUNT(*) FROM "episodes"
-WHERE 
+WHERE "title"
