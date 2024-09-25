@@ -1,1 +1,1 @@
-SELECT "japanse_title", "english_title" FROM "
+SELECT "japanese_title", "english_title" FROM "views";
