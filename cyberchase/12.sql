@@ -1,2 +1,1 @@
-SELECT COUNT(*) FROM "episodes"
-WHERE "title"
+SELECT COUNT(DISTINCT "title") FROM "episodes";
