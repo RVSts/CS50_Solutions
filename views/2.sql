@@ -1,2 +1,4 @@
-SELECT "avegare_color" FROM "views"
+SELECT "avegare_color",
+COUNT(*)
+FROM "views"
 WHERE "english_title" LIKE "%river%"
