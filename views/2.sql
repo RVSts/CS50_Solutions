@@ -1,4 +1,8 @@
-SELECT "avegare_color",
-COUNT(*)
+SELECT "average_color"
 FROM "views"
-WHERE "english_title" LIKE "%river%"
+WHERE "english_title" LIKE '%river%';
+
+SELECT COUNT("average_colow")
+FROM "views"
+WHERE "english_title" LIKE '%river%' AND 
+
