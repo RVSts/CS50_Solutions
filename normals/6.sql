@@ -1,7 +1,7 @@
-SELECT "50m", "latitude", "longitude"
+SELECT "latitude", "longitude", "50m"
 FROM "normals"
 WHERE
-    ("latitude" = '20' AND "longitude" = '55') OR
-    ("latitude" = '20' AND "longitude" = '75') OR
-    ("latitude" = '0' AND "longitude" = '55') OR
-    ("latitude" = '0' AND "longitude" = '75');
+    ("latitude" LIKE '20%' AND "longitude" LIKE '55%') OR
+    ("latitude" LIKE '20%' AND "longitude" LIKE '75%') OR
+    ("latitude" LIKE '0%' AND "longitude" LIKE '55%') OR
+    ("latitude" LIKE '0%' AND "longitude" LIKE '75%');
