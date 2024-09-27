@@ -1,3 +1,3 @@
-SELECT "0m", "100m", "200m"
+SELECT "0m"
 FROM "normals"
-WHERE "latitude" = '32.3' AND "longitude" = '64.8';
+WHERE "latitude" = '25.0' AND "longitude" = '-71.0';
