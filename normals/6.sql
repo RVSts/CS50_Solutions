@@ -1,4 +1,4 @@
-SELECT "latitude", "longitude", "50m"
+SELECT "latitude", "50m", "longitude"
 FROM "normals"
 WHERE
     ("latitude" LIKE '20%' AND "longitude" LIKE '55%') OR
