@@ -1,3 +1,3 @@
 SELECT COUNT("latitude")
 FROM "normals"
-WHERE 
+WHERE "latitude" BETWEEN '-180' AND '180';
