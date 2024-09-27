@@ -1,2 +1,2 @@
 SELECT "0m" FROM "normals"
-WHERE 
+WHERE "latitude" = '42.5' AND "longitude" = '-69.5';
