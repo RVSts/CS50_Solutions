@@ -1,9 +1,7 @@
 
 -- *** The Lost Letter ***
 SELECT "action" FROM "scans" WHERE(    -- First we need to stabilish what is being requested. Anekke needs to know if the letter was dropped off
-    SELECT "address" FROM "adresses" WHERE(
-        SELECT "id" FROM "
-    )
+    SELECT "id" FROM "adresses" WHERE "from_address_id" = '900 Somerville Avenue' AND "to_address_id" = '2 Finnegan Street'
 )
 
 
