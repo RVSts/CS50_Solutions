@@ -23,9 +23,25 @@ WHERE "package_id" IN(
     )
 );
 -- *** The Devious Delivery ***
-SELECT a."type", b."contents" FROM "addresses" a
-JOIN "packages" b ON a."id" = b."to_address_id"
-WHERE b."from_address_id" IS NULL;
+
+SELECT * FROM "packages"
+WHERE "from_address_id" IS NULL;
+
+SELECT * FROM "scans"
+WHERE "package_id" IN(
+    SELECT "id" FROM "packages"
+    WHERE "from_address_id" IS NULL
+);
+
+SELECT * FROM "addresses"
+WHERE "id" IN(
+    SELECT "address_id" FROM "scans"
+    WHERE "action" = 'Drop' AND "package_id" IN(
+        SELECT "id" FROM 'packages'
+        WHERE "from_address_id" IS NULL
+    )
+);
+
 
 -- *** The Forgotten Gift ***
 
