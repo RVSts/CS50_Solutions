@@ -23,7 +23,16 @@ WHERE "package_id" IN(
     )
 );
 -- *** The Devious Delivery ***
+SELECT "id", "address", "type" FROM "addresses"
+WHERE "id" IN(
+    SELECT "to_address_id" FROM "packages"
+    WHERE "from_address_id" IS NULL
+);
 
+SELECT "contents" FROM "packages"
+WHERE "from_address_id" IS NULL;
+
+SELECT "
 
 -- *** The Forgotten Gift ***
 
