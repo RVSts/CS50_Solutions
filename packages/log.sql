@@ -67,7 +67,7 @@ WHERE "package_id" IN(
 SELECT * FROM "drivers"
 WHERE "id" IN(
     SELECT "driver_id" FROM "scans"
-    WHERE "action" = 'pick' AND "package_id" IN(
+    WHERE "package_id" IN(
         SELECT "id" FROM "packages"
         WHERE "to_address_id" IN(
             SELECT "id" FROM "addresses"
