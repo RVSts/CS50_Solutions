@@ -1,2 +1,2 @@
-SELECT "name", COUNT("pupils") FROM "districts"
+SELECT "name", "pupils" FROM "districts"
 JOIN "expenditures";
