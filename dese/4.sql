@@ -1,2 +1,2 @@
 SELECT "city" FROM "schools"
-WHERE 
+ORDER BY COUNT()
