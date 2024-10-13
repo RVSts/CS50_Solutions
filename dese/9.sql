@@ -1,2 +1,7 @@
 SELECT "name" FROM "districts"
-WHERE 
+WHERE "id" IN(
+    SELECT "district_id" FROM "expenditures"
+    GROUP BY "pupils"
+    ORDER BY "pupils" DESC
+    LIMIT 10
+);
