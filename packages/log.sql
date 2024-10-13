@@ -73,9 +73,15 @@ WHERE "id" IN(
             SELECT "id" FROM "addresses"
             WHERE "address" = '728 Maple Place'
         )
-        WHERE "from_address_id" IN(
+        AND "from_address_id" IN(
             SELECT "id" FROM "addresses"
             WHERE "address" != '109 Tileston Street'
         )
     )
+);
+
+SELECT * FROM "packages"
+WHERE "from_address_id" IN(
+    SELECT "id" FROM "addresses"
+    WHERE "address" = '109 Tileston Street'
 );
