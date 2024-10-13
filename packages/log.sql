@@ -69,9 +69,9 @@ WHERE "id" IN(
     SELECT "driver_id" FROM "scans"
     WHERE "action" = 'Pick' AND "package_id" IN(
         SELECT "id" FROM "packages"
-        WHERE "to_address_id" IN(
+        WHERE "from_address_id" IN(
             SELECT "id" FROM "addresses"
-            WHERE "address" = '728 Maple Place'
+            WHERE "address" != '109 Tileston Street'
         )
     )
 );
