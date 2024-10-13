@@ -48,7 +48,8 @@ WHERE "id" IN(
 SELECT "id" FROM "addresses"
 WHERE "address" = '728 Maple Place';
 
-SELECT "id" FROM "packages"
+SELECT * FROM "packages"
 WHERE "to_address_id" IN(
-    
-)
+    SELECT "id" FROM "addresses"
+    WHERE "address" = '728 Maple Place'
+);
