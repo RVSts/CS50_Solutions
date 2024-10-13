@@ -45,4 +45,10 @@ WHERE "id" IN(
 
 -- *** The Forgotten Gift ***
 
-SELECT 
+SELECT "id" FROM "addresses"
+WHERE "address" = '728 Maple Place';
+
+SELECT "id" FROM "packages"
+WHERE "to_address_id" IN(
+    
+)
