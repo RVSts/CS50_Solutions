@@ -1,3 +1,2 @@
 SELECT "name", "pupils" FROM "districts"
-JOIN "expenditures"
-WHERE "name" NOT LIKE '%non-op%';
+JOIN "expenditures" ON "districts"."id" = "expenditures"."district_id";
