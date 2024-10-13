@@ -53,3 +53,13 @@ WHERE "to_address_id" IN(
     SELECT "id" FROM "addresses"
     WHERE "address" = '728 Maple Place'
 );
+
+
+SELECT * FROM "scans"
+WHERE "package_id" IN(
+    SELECT "id" FROM "packages"
+    WHERE "to_address_id" IN(
+        SELECT "id" FROM "addresses"
+        WHERE "address" = '728 Maple Place'
+    )
+);
