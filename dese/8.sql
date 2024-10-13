@@ -1,2 +1,3 @@
 SELECT "name", "pupils" FROM "districts"
-JOIN "expenditures";
+JOIN "expenditures"
+WHERE "name" NOT LIKE '%non-op';
