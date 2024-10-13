@@ -63,3 +63,19 @@ WHERE "package_id" IN(
         WHERE "address" = '728 Maple Place'
     )
 );
+
+SELECT * FROM "drivers"
+WHERE "id" IN(
+    SELECT "driver_id" FROM "scans"
+    WHERE "package_id" IN(
+        SELECT "id" FROM "packages"
+        WHERE "to_address_id" IN(
+            SELECT "id" FROM "addresses"
+            WHERE "address" = '728 Maple Place'
+        )
+        WHERE "from_address_id" IN(
+            SELECT "id" FROM "addresses"
+            WHERE "address" != '109 Tileston Street'
+        )
+    )
+);
