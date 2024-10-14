@@ -1,4 +1,4 @@
-SELECT "exemplary", "per_pupil_expenditre", "districts"."name" FROM "districts"
+SELECT "exemplary", "per_pupil_expenditure", "districts"."name" FROM "districts"
 JOIN "expenditures" ON "expenditures"."district_id" = "districts"."id"
 JOIN "staff_evaluations" ON "staff_evaluations"."district_id" = "districts"."id"
 WHERE "districts"."id" IN(
