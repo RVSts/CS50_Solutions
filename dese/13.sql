@@ -1,6 +1,6 @@
 SELECT "staff_evaluations"."exemplary", "staff_evaluations"."unsatisfactory", "districts"."name", "expenditures"."per_pupil_expenditure"
 FROM "districts"
-JOIN "staff_evaluations" ON "staff_evalutations"."district_id" = "districts"."id"
+JOIN "staff_evaluations" ON "staff_evaluations"."district_id" = "districts"."id"
 JOIN "expenditures" ON "expenditures"."district_id" = "districts"."id"
 WHERE "districts"."type" = 'Public School District'
 AND "staff_evaluations"."exemplary" >(
