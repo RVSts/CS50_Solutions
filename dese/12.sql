@@ -1,4 +1,4 @@
-SELECT "per_pupil_expenditure", "exemplary", "districts"."name" FROM "districts"
+SELECT "expenditures"."per_pupil_expenditure", "staff_evaluations"."exemplary", "districts"."name" FROM "districts"
 JOIN "expenditures" ON "expenditures"."district_id" = "districts"."id"
 JOIN "staff_evaluations" ON "staff_evaluations"."district_id" = "districts"."id"
 WHERE "districts"."id" IN(
@@ -15,4 +15,4 @@ AND "districts"."id" IN(
         SELECT AVG ("exemplary") FROM "staff_evaluations"
     )
 )
-ORDER BY "exemplary" DESC, "per_pupil_expenditure" DESC;
+ORDER BY "staff_evaluations"."exemplary" DESC, "expenditures"."per_pupil_expenditure" DESC;
