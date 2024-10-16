@@ -8,5 +8,4 @@ WHERE "id" IN(
         LIMIT 10
     )
 )
-GROUP BY "id"
 ORDER BY "id" ASC;
