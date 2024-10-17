@@ -7,7 +7,7 @@ WHERE "id" IN(
         ORDER BY "dollars per RBI" ASC
         LIMIT 10
     ) AS subquery
-    UNION
+    INTERSECT
     SELECT "players_id" FROM(
         SELECT "performances"."player_id" AS "players_id", ("salaries"."salary" / "performances"."H") AS "dollars per hit" FROM "performances"
         JOIN "salaries" ON "salaries"."player_id" = "performances"."player_id" AND "salaries"."year" = "performances"."year"
