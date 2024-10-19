@@ -6,7 +6,7 @@ CREATE TABLE "users"(
     "password" TEXT,
     "connection_people_id" NUMERIC,
     FOREIGN KEY ("connection_people_id") REFERENCES "connections_people"("id"),
-    
+
 );
 
 CREATE TABLE "schools_universities"(
@@ -25,5 +25,9 @@ CREATE TABLE "companies"(
 );
 
 CREATE TABLE "connections_people"(
-    "id" NUMERIC PRIMARY KEY
+    "id" NUMERIC PRIMARY KEY,
+    "first_person_id" NUMERIC,
+    "second_person_id" NUMERIC,
+    FOREIGN KEY("first_person_id") REFERENCES "users"("id"),
+    FOREIGN KEY("second_person_id") REFERENCES "users"("id")
 )
