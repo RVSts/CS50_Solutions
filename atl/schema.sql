@@ -6,8 +6,7 @@ CREATE TABLE "passengers"(
 );
 
 CREATE TABLE "check_ins"(
-    "date" TEXT,
-    "time" TEXT,
+    "date_time" TEXT,
     "passenger_id" NUMERIC,
     "flight_id" NUMERIC,
     FOREIGN KEY ("passenger_id") REFERENCES "passengers"("id"),
@@ -25,10 +24,8 @@ CREATE TABLE "flights"(
     "airline_name" TEXT,
     "from_code_airport" TEXT,
     "to_code_airport" TEXT,
-    "departure_date" TEXT,
-    "departure_time" TEXT,
-    "arrival_date" TEXT,
-    "arrival_time" TEXT,
+    "departure_date_time" TEXT,
+    "arrival_date_time" TEXT,
     PRIMARY KEY("number", "id"),
     FOREIGN KEY ("airline_name") REFERENCES "airlines"("name")
 );
