@@ -20,7 +20,7 @@ CREATE TABLE "donuts_ingredients"(
     "ingredient_id" INTEGER,
     FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
     FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("id")
-)
+);
 
 CREATE TABLE "orders"(
     "id" INTEGER PRIMARY KEY,
