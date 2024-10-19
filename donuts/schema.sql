@@ -25,13 +25,13 @@ CREATE TABLE "donuts_ingredients"(
 CREATE TABLE "orders"(
     "id" INTEGER PRIMARY KEY,
     "donut_id" INTEGER,
-    "customer_id" NUMERIC,
+    "customer_id" INTEGER,
     FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
     FOREIGN KEY ("customer_id") REFERENCES "customers"("id")
 );
 
 CREATE TABLE "customers"(
-    "id" NUMERIC PRIMARY KEY,
+    "id" INTEGER PRIMARY KEY,
     "first_name" TEXT,
     "last_name" TEXT,
     "history" TEXT
