@@ -1,5 +1,5 @@
 CREATE TABLE "ingredients"(
-    "id" NUMERIC PRIMARY KEY
+    "id" NUMERIC PRIMARY KEY,
     "typical" TEXT,
     "sugar" TEXT,
     "typical_price" NUMERIC,
@@ -7,19 +7,21 @@ CREATE TABLE "ingredients"(
 );
 
 CREATE TABLE "donuts"(
-    "name" TEXT PRIMARY KEY,
+    "id" NUMERIC PRIMARY KEY,
+    "name" TEXT,
     "type" TEXT,
     "price" NUMERIC,
-    "ingredient_id"
-    FOREING KEY ("ingredient_id") REFERENCES "ingredients"("id"),
+    "ingredient_id" NUMERIC,
+    FOREING KEY ("ingredient_id") REFERENCES "ingredients"("id")
 );
 
 CREATE TABLE "orders"(
+    "id" NUMERIC PRIMARY KEY,
     "order_number" NUMERIC,
-    "donut_name" TEXT,
+    "donut_id" NUMERIC,
     "customer_id" NUMERIC,
-    FOREING KEY ("donut_name") REFERENCES "donuts"("name"),
-    FOREING KEY ("customer_id") REFERENCES "customers"("id"),
+    FOREING KEY ("donut_id") REFERENCES "donuts"("id"),
+    FOREING KEY ("customer_id") REFERENCES "customers"("id")
 );
 
 CREATE TABLE "customers"(
