@@ -12,7 +12,7 @@ CREATE TABLE "donuts"(
     "typical_used" TEXT,
     "sugar_used" TEXT,
     FOREING KEY ("typical_used") REFERENCES "ingredients"("typical"),
-    FOREING KEY ("sugar_used" REFERENCES "ingredients"("sugar")
+    FOREING KEY ("sugar_used") REFERENCES "ingredients"("sugar")
 );
 
 CREATE TABLE "orders"(
