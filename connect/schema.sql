@@ -4,6 +4,7 @@ CREATE TABLE "users"(
     "last_name" TEXT,
     "username" TEXT,
     "password" TEXT
+    "connection_people_id"
 );
 
 CREATE TABLE "schools_universities"(
@@ -20,3 +21,7 @@ CREATE TABLE "companies"(
     "type" TEXT,
     "location" TEXT
 );
+
+CREATE TABLE "connections_people"(
+    "id" NUMERIC PRIMARY KEY
+)
