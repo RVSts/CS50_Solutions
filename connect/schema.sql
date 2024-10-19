@@ -3,8 +3,10 @@ CREATE TABLE "users"(
     "first_name" TEXT,
     "last_name" TEXT,
     "username" TEXT,
-    "password" TEXT
-    "connection_people_id"
+    "password" TEXT,
+    "connection_people_id" NUMERIC,
+    FOREIGN KEY ("connection_people_id") REFERENCES "connections_people"("id"),
+    
 );
 
 CREATE TABLE "schools_universities"(
