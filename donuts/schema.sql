@@ -1,5 +1,5 @@
 CREATE TABLE "ingredients"(
-    "id" NUMERIC PRIMARY KEY
+    "id" NUMERIC PRIMARY KEY,
     "typical" TEXT,
     "sugar" TEXT,
     "typical_price" NUMERIC,
