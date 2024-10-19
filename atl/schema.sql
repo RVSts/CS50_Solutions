@@ -15,7 +15,8 @@ CREATE TABLE "check_ins"(
 
 CREATE TABLE "airlines"(
     "name" TEXT,
-    "concourse" TEXT
+    "concourse" TEXT,
+    PRIMARY KEY("name")
 );
 
 CREATE TABLE "flights"(
@@ -27,5 +28,6 @@ CREATE TABLE "flights"(
     "departure_date" TEXT,
     "departure_time" TEXT,
     "arrival_date" TEXT,
-    "arrival_time"
+    "arrival_time" TEXT,
+    PRIMARY KEY("number", "id")
 );
