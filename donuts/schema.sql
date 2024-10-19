@@ -11,10 +11,15 @@ CREATE TABLE "donuts"(
     "id" NUMERIC PRIMARY KEY,
     "name" TEXT,
     "is_gluten_free" BOOLEAN,
-    "price" REAL,
-    "ingredient_id",
-    FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("id")
+    "price" REAL
 );
+
+CREATE TABLE "donuts_ingredients"(
+    "donut_id",
+    "ingredient_id",
+    FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
+    FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("id")
+)
 
 CREATE TABLE "orders"(
     "id" NUMERIC PRIMARY KEY,
