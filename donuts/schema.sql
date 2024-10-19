@@ -15,6 +15,7 @@ CREATE TABLE "donuts"(
 );
 
 CREATE TABLE "donuts_ingredients"(
+    "id" NUMERIC PRIMARY KEY,
     "donut_id",
     "ingredient_id",
     FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
