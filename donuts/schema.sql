@@ -5,5 +5,9 @@ CREATE TABLE "donuts"(
 );
 
 CREATE TABLE "orders"(
-    
+    "numer" NUMERIC,
+    "donuts_name" TEXT,
+    "customer_id" NUMERIC
 )
+
+CREATE TABLE 
