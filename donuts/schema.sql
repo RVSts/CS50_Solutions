@@ -24,7 +24,6 @@ CREATE TABLE "donuts_ingredients"(
 
 CREATE TABLE "orders"(
     "id" INTEGER PRIMARY KEY,
-    "donut_id" INTEGER,
     "customer_id" INTEGER,
     FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
     FOREIGN KEY ("customer_id") REFERENCES "customers"("id")
@@ -36,3 +35,11 @@ CREATE TABLE "customers"(
     "last_name" TEXT,
     "history" TEXT
 );
+
+CREATE TABLE "orders_customers"(
+    "donut_id" INTEGER,
+    "customer_id" INTEGER,
+    PRIMARY KEY ("donut_id", "customer_id")
+    FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
+    FOREIGN KEY ("customer_id") REFERENCES "customers"("id")
+)
