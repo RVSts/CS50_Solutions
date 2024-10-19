@@ -12,7 +12,7 @@ CREATE TABLE "donuts"(
     "type" TEXT,
     "price" NUMERIC,
     "ingredient_id" NUMERIC,
-    FOREING KEY ("ingredient_id") REFERENCES "ingredients"("id")
+    FOREING
 );
 
 CREATE TABLE "orders"(
@@ -28,5 +28,5 @@ CREATE TABLE "customers"(
     "id" NUMERIC PRIMARY KEY,
     "first_name" TEXT,
     "last_name" TEXT,
-    "history" TEXT
+    "history" TEXT,
 );
