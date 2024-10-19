@@ -1,4 +1,5 @@
 CREATE TABLE "ingredients"(
+    "id" NUMERIC PRIMARY KEY
     "typical" TEXT,
     "sugar" TEXT,
     "typical_price" NUMERIC,
@@ -9,10 +10,8 @@ CREATE TABLE "donuts"(
     "name" TEXT PRIMARY KEY,
     "type" TEXT,
     "price" NUMERIC,
-    "typical_used" TEXT,
-    "sugar_used" TEXT,
-    FOREING KEY ("typical_used") REFERENCES "ingredients"("typical"),
-    FOREING KEY ("sugar_used") REFERENCES "ingredients"("sugar")
+    "ingredient_id"
+    FOREING KEY ("ingredient_id") REFERENCES "ingredients"("id"),
 );
 
 CREATE TABLE "orders"(
