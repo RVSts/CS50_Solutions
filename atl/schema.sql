@@ -16,12 +16,16 @@ CREATE TABLE "check_ins"(
 CREATE TABLE "airlines"(
     "name" TEXT,
     "concourse" TEXT
-)
+);
 
 CREATE TABLE "flights"(
     "number" INTEGER,
     "id" NUMERIC,
     FOREIGN KEY ("airline_name") REFERENCES "airlines"("name"),
-    "code" TEXT,
-    
-)
+    "from_code_airport" TEXT,
+    "to_code_airport" TEXT,
+    "departure_date" TEXT,
+    "departure_time" TEXT,
+    "arrival_date" TEXT,
+    "arrival_time"
+);
