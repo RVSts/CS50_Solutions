@@ -3,14 +3,15 @@ CREATE TABLE "ingredients"(
     "typical" TEXT,
     "sugar" TEXT,
     "typical_price" NUMERIC,
-    "sugar_price" NUMERIC
+    "sugar_price" NUMERIC,
+    "unit" TEXT
 );
 
 CREATE TABLE "donuts"(
     "id" NUMERIC PRIMARY KEY,
     "name" TEXT,
-    "type" TEXT,
-    "price" NUMERIC,
+    "is_gluten_free" BOOLEAN,
+    "price" REAL,
     "ingredient_id",
     FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("id")
 );
