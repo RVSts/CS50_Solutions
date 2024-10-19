@@ -6,23 +6,25 @@ CREATE TABLE "ingredients"(
 );
 
 CREATE TABLE "donuts"(
-    "name" TEXT,
+    "name" TEXT PRIMARY KEY,
     "type" TEXT,
     "price" NUMERIC,
     "typical_used" TEXT,
     "sugar_used" TEXT,
     FOREING KEY ("typical_used") REFERENCES "ingredients"("typical"),
     FOREING KEY ("sugar_used" REFERENCES "ingredients"("sugar")
-)
+);
+
 CREATE TABLE "orders"(
-    "numer" NUMERIC,
-    "donuts_name" TEXT,
-    "customer_id" NUMERIC
-)
+    "order_number" NUMERIC,
+    "donut_name" TEXT,
+    "customer_id" NUMERIC,
+    FOREING KEY ("donut_name") REFERENCES "donuts"("name"),
+    FOREING KEY ("customer_id") REFERENCES "customers"("id"),
+);
 
 CREATE TABLE "customers"(
     "id" NUMERIC PRIMARY KEY,
     "first_name" TEXT,
     "last_name" TEXT,
-
-)
+);
