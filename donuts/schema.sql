@@ -12,7 +12,7 @@ CREATE TABLE "donuts"(
     "type" TEXT,
     "price" NUMERIC,
     "ingredient_id",
-    FOREING KEY ("ingredient_id") REFERENCES "ingredients"("id")
+    FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("id")
 );
 
 CREATE TABLE "orders"(
@@ -20,8 +20,8 @@ CREATE TABLE "orders"(
     "order_number" NUMERIC,
     "donut_id" NUMERIC,
     "customer_id" NUMERIC,
-    FOREING KEY ("donut_id") REFERENCES "donuts"("id"),
-    FOREING KEY ("customer_id") REFERENCES "customers"("id")
+    FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
+    FOREIGN KEY ("customer_id") REFERENCES "customers"("id")
 );
 
 CREATE TABLE "customers"(
