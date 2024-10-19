@@ -10,4 +10,9 @@ CREATE TABLE "orders"(
     "customer_id" NUMERIC
 )
 
-CREATE TABLE 
+CREATE TABLE "customers"(
+    "id" NUMERIC PRIMARY KEY,
+    "first_name" TEXT,
+    "last_name" TEXT,
+    
+)
