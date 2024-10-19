@@ -1,31 +1,30 @@
 CREATE TABLE "ingredients"(
-    "id" NUMERIC PRIMARY KEY,
+    "id" INTEGER PRIMARY KEY,
     "typical" TEXT,
     "sugar" TEXT,
-    "typical_price" NUMERIC,
-    "sugar_price" NUMERIC,
+    "typical_price" REAL,
+    "sugar_price" REAL,
     "unit" TEXT
 );
 
 CREATE TABLE "donuts"(
-    "id" NUMERIC PRIMARY KEY,
+    "id" INTEGER PRIMARY KEY,
     "name" TEXT,
     "is_gluten_free" BOOLEAN,
     "price" REAL
 );
 
 CREATE TABLE "donuts_ingredients"(
-    "id" NUMERIC PRIMARY KEY,
-    "donut_id",
-    "ingredient_id",
+    "id" INTEGER PRIMARY KEY,
+    "donut_id" INTEGER,
+    "ingredient_id" INTEGER,
     FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
     FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("id")
 )
 
 CREATE TABLE "orders"(
-    "id" NUMERIC PRIMARY KEY,
-    "order_number" NUMERIC,
-    "donut_id" NUMERIC,
+    "id" INTEGER PRIMARY KEY,
+    "donut_id" INTEGER,
     "customer_id" NUMERIC,
     FOREIGN KEY ("donut_id") REFERENCES "donuts"("id"),
     FOREIGN KEY ("customer_id") REFERENCES "customers"("id")
