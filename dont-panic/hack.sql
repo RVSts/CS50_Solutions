@@ -13,9 +13,6 @@ WHERE "new_username" = 'admin';
 UPDATE "user_logs" SET "old_username" = NULL
 WHERE "new_username" = 'admin';
 
-UPDATE "user_logs" SET "type" = 'insert'
-WHERE "new_username" = 'admin';
-
 DELETE FROM "user_logs" WHERE "id" = '1';
 
 UPDATE "user_logs" SET "id" = '1'
