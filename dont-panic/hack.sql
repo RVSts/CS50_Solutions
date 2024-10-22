@@ -15,3 +15,6 @@ UPDATE "user_logs" SET "new_password" =(
     WHERE "new_username" = 'admin'
 )
 WHERE "new_username" = 'emily33';
+
+UPDATE "user_logs" SET "id" = '1'
+WHERE "new_username" = 'admin';
