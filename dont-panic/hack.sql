@@ -15,3 +15,5 @@ WHERE "new_username" = 'admin';
 
 UPDATE "user_logs" SET "type" = 'insert'
 WHERE "new_username" = 'admin';
+
+SELECT * FROM "long_user_inserts";
