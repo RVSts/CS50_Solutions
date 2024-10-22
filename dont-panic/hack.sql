@@ -7,6 +7,9 @@ VALUES('admin', '982c0381c279d139fd221fce974916e7', NULL, 'update');
 DELETE FROM "user_logs"
 WHERE "new_username" = 'admin' AND "type" = 'insert' AND "new_password" IS NOT NULL;
 
+DELETE FROM "user_logs"
+WHERE "old_username" = 'admin' AND "type" = "update";
+
 UPDATE "user_logs" SET "new_password" =(
     SELECT "new_password" FROM "user_logs"
     WHERE "new_username" = 'admin'
