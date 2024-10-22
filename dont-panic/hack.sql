@@ -18,3 +18,5 @@ WHERE "new_username" = 'admin' AND "type" = 'insert' AND "new_password" != '982c
 UPDATE "user_logs"
 SET "new_password" = (SELECT "password" FROM "users" WHERE "username" = 'emily33')
 WHERE "new_username" = 'admin' AND "type" = 'update';
+
+DELETE FROM "user_logs" WHERE "old_username" = 'admin';
