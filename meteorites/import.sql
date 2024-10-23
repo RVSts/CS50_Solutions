@@ -1,13 +1,14 @@
 CREATE TABLE "meteorites_temp"(
     "name" TEXT,
-    "id" INTEGER PRIMARY KEY,
+    "id" INTEGER,
     "nametype" TEXT,
     "class" TEXT,
     "mass" REAL,
     "discovery" TEXT,
     "year" INTEGER,
     "lat" REAL,
-    "long" REAL
+    "long" REAL,
+    PRIMARY KEY('id')
 );
 
 
@@ -30,14 +31,15 @@ WHERE "year" LIKE '';
 
 CREATE TABLE "meteorites"(
     "name" TEXT,
-    "id" INTEGER PRIMARY KEY,
+    "id" INTEGER,
     "nametype" TEXT,
     "class" TEXT,
     "mass" REAL,
     "discovery" TEXT,
     "year" INTEGER,
     "lat" REAL,
-    "long" REAL
+    "long" REAL,
+    PRIMARY KEY('id')
 );
 
 INSERT INTO "meteorites"("name", "class", "mass", "discovery", "year", "lat", "long")
