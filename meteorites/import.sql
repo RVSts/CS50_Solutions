@@ -1,10 +1,10 @@
 CREATE TABLE meteorites_temp(
-    "id" INTEGER,
+    "id" INTEGER PRIMARY KEY,
     "name" TEXT,
     "class" TEXT,
     "mass" REAL,
     "discovery" TEXT,
-    "year" TEXT,
+    "year" INTEGER,
     "lat" REAL,
     "long" REAL
 );
