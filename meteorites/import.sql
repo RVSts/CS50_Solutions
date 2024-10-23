@@ -25,6 +25,9 @@ WHERE "long" = 0;
 
 UPDATE "meteorites_temp" SET "mass" = ROUND("mass", 2), "long" = ROUND("long", 2), "long" = ROUND("long", 2);
 
+UPDATE "meteorites_temp" SET "year" = NULL
+WHERE "year" LIKE '';
+
 CREATE TABLE "meteorites"(
     "name" TEXT,
     "id" INTEGER PRIMARY KEY,
@@ -42,4 +45,4 @@ SELECT "name", "class", "mass", "discovery", "year", "lat", "long" FROM "meteori
 WHERE "nametype" != '%relict%'
 ORDER BY "year" ASC, "name" ASC;
 
-DROP TABLE "meteorites_temp";
+
