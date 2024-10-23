@@ -38,6 +38,6 @@ WHERE "nametype" = 'Relict';
 UPDATE "meteorites_temp" SET "id" = (SELECT "id" FROM "meteorites_temp"
 ORDER BY "year" ASC, "name" ASC);
 
-UPDATE "meteorites_temp" SET "id" = (SELECT COUNT(*) FROM "meteorites_temp" AS 'u'
-WHERE 'u'."id" < "meteorites_tempo"."id") + 1
+UPDATE "meteorites_temp" SET "id" = (SELECT COUNT(*) FROM "meteorites_temp" AS u
+WHERE u."id" < "meteorites_tempo"."id") + 1
 ORDER BY "id";
