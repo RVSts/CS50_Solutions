@@ -1,3 +1,15 @@
+CREATE TABLE meteorites(
+    "name" TEXT,
+    "id" INTEGER PRIMARY KEY,
+    "nametype" TEXT,
+    "class" TEXT,
+    "mass" REAL,
+    "discovery" TEXT,
+    "year" INTEGER,
+    "lat" REAL,
+    "long" REAL
+);
+
 CREATE TABLE meteorites_temp(
     "name" TEXT,
     "id" INTEGER PRIMARY KEY,
@@ -32,11 +44,6 @@ WHERE "long" IS NOT NULL;
 
 DELETE FROM "meteorites_temp"
 WHERE "nametype" = 'Relict';
-
--- Remover a coluna id
-CREATE TABLE meteorites AS
-SELECT "name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
-FROM "meteorites_temp";
 
 -- Atualizar a nova tabela com IDs únicos
 WITH OrderedMeteorites AS (
