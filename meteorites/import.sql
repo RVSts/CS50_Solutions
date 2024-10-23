@@ -22,3 +22,6 @@ WHERE "lat" = 0;
 
 UPDATE "meteorites_temp" SET "long" = NULL
 WHERE "long" = 0;
+
+UPDATE "meteorites_temp" SET "mass" = ROUND("mass", 2)
+WHERE "mass" IS NOT NULL;
