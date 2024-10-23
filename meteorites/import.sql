@@ -32,4 +32,5 @@ WHERE "lat" IS NOT NULL;
 UPDATE "meteorites_temp" SET "long" = ROUND("long", 2)
 WHERE "long" IS NOT NULL;
 
-DELETE FROM "
+DELETE FROM "meteorites_temp"
+WHERE "nametype" = 'Relict';
