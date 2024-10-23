@@ -22,6 +22,7 @@ CREATE TABLE meteorites_temp(
     "long" REAL
 );
 
+.mode csv
 .import --csv --skip 1 meteorites.csv meteorites_temp
 
 UPDATE "meteorites_temp" SET "mass" = NULL
