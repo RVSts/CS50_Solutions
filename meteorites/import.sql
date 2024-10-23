@@ -35,7 +35,7 @@ WHERE "nametype" = 'Relict';
 
 -- Remover a coluna id
 CREATE TABLE meteorites AS
-SELECT "name", NULL AS "id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
+SELECT "name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
 FROM "meteorites_temp";
 
 -- Atualizar a nova tabela com IDs únicos
