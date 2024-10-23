@@ -34,17 +34,23 @@ WHERE "lat" = 0;
 UPDATE "meteorites_temp" SET "long" = NULL
 WHERE "long" = 0;
 
-UPDATE "meteorites_temp" SET "mass" = ROUND("mass", 2)
-WHERE "mass" IS NOT NULL;
-
-UPDATE "meteorites_temp" SET "lat" = ROUND("lat", 2)
-WHERE "lat" IS NOT NULL;
-
-UPDATE "meteorites_temp" SET "long" = ROUND("long", 2)
-WHERE "long" IS NOT NULL;
-
-DELETE FROM "meteorites_temp"
-WHERE "nametype" = 'Relict';
+INSERT INTO "meteorites" ("name", "class", "mass", "discovery", "year", "lat", "long")
+SELECT
+    "name",
+    "class",
+    ROUND("mass", 2) AS "mass",
+    "discovery",
+    "year",
+    ROUND("lat", 2) AS "lat",
+    ROUND("long", 2) AS "long"
+FROM
+    "meteorites_temp"
+WHERE
+    "nametype" != 'Relict' AND
+    ("mass" IS NOT NULL OR "lat" IS NOT NULL OR "long" IS NOT NULL) -- Elimina registros sem dados importantes
+ORDER BY
+    year ASC,
+    name ASC;
 
 -- Atualizar a nova tabela com IDs únicos
 WITH OrderedMeteorites AS (
