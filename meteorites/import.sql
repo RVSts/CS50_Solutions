@@ -26,13 +26,13 @@ CREATE TABLE meteorites_temp(
 .import --csv --skip 1 meteorites.csv meteorites_temp
 
 UPDATE "meteorites_temp" SET "mass" = NULL
-WHERE "mass" = 0;
+WHERE "mass" = "0";
 
 UPDATE "meteorites_temp" SET "lat" = NULL
-WHERE "lat" = 0;
+WHERE "lat" = "0";
 
 UPDATE "meteorites_temp" SET "long" = NULL
-WHERE "long" = 0;
+WHERE "long" = "0";
 
 INSERT INTO "meteorites" ("name", "class", "mass", "discovery", "year", "lat", "long")
 SELECT
@@ -45,19 +45,8 @@ SELECT
     ROUND("long", 2) AS "long"
 FROM
     "meteorites_temp"
-WHERE
-    "nametype" != 'Relict'
+WHERE "nametype" != 'Relict'
 ORDER BY "year" ASC, "name" ASC;
 
--- Atualizar a nova tabela com IDs únicos
-WITH OrderedMeteorites AS (
-    SELECT ROW_NUMBER() OVER (ORDER BY "year", "name") AS "id",
-           "name", "nametype", "class", "mass", "discovery", "year", "lat", "long"
-    FROM "meteorites_temp"
-)
-INSERT INTO meteorites ("name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long")
-SELECT "name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
-FROM OrderedMeteorites;
-
 -- Renomear a tabela
-DROP TABLE meteorites_temp;
+DROP TABLE "meteorites_temp";
