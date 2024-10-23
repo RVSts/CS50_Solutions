@@ -37,10 +37,9 @@ CREATE TABLE "meteorites"(
     "long" REAL
 );
 
-INSERT INTO "meteorites"("name", "class", "mass", "discovery, "year", "lat", "long")
-SELECT "name", "class", "mass", "discovery, "year", "lat", "long" FROM "meteorites_temp"
+INSERT INTO "meteorites"("name", "class", "mass", "discovery", "year", "lat", "long")
+SELECT "name", "class", "mass", "discovery", "year", "lat", "long" FROM "meteorites_temp"
 WHERE "nametype" != '%relict%'
 ORDER BY "year" ASC, "name" ASC;
 
 DROP TABLE "meteorites_temp";
-
