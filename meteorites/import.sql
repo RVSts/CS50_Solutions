@@ -39,5 +39,13 @@ UPDATE "meteorites_temp" SET "id" = (SELECT COUNT(*) FROM "meteorites_temp" AS "
 WHERE "u"."id" < "meteorites_tempo"."id") + 1
 ORDER BY "id";
 
+WITH OrderedMeteorites AS (
+    SELECT "id", ROW_NUMBER() OVER (ORDER BY "year", "name") AS new_id
+    FROM "meteorites_temp"
+)
+UPDATE "meteorites_temp"
+SET "id" = (SELECT new_id FROM OrderedMeteorites WHERE OrderedMeteorites."id" = "meteorites_temp"."id");
+
+
 UPDATE "meteorites_temp" SET "id" = (SELECT "id" FROM "meteorites_temp"
 ORDER BY "year" ASC, "name" ASC);
