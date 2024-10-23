@@ -40,12 +40,12 @@ FROM "meteorites_temp";
 
 -- Atualizar a nova tabela com IDs únicos
 WITH OrderedMeteorites AS (
-    SELECT ROW_NUMBER() OVER (ORDER BY "year", "name") AS "new_id",
+    SELECT ROW_NUMBER() OVER (ORDER BY "year", "name") AS "id",
            "name", "nametype", "class", "mass", "discovery", "year", "lat", "long"
     FROM "meteorites_temp"
 )
 INSERT INTO meteorites ("name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long")
-SELECT "name", "new_id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
+SELECT "name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
 FROM OrderedMeteorites;
 
 -- Renomear a tabela
