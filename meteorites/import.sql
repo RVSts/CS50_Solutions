@@ -34,7 +34,7 @@ DELETE FROM "meteorites_temp"
 WHERE "nametype" = 'Relict';
 
 -- Remover a coluna id
-CREATE TABLE meteorites_temp_new AS
+CREATE TABLE meteorites AS
 SELECT "name", NULL AS "id", "nametype", "class", "mass", "discovery", "year", "lat", "long"
 FROM "meteorites_temp";
 
@@ -44,10 +44,9 @@ WITH OrderedMeteorites AS (
            "name", "nametype", "class", "mass", "discovery", "year", "lat", "long"
     FROM "meteorites_temp"
 )
-INSERT INTO meteorites_temp_new ("name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long")
+INSERT INTO meteorites ("name", "id", "nametype", "class", "mass", "discovery", "year", "lat", "long")
 SELECT "name", new_id, "nametype", "class", "mass", "discovery", "year", "lat", "long"
 FROM OrderedMeteorites;
 
 -- Renomear a tabela
 DROP TABLE meteorites_temp;
-ALTER TABLE meteorites_temp_new RENAME TO meteorites_temp;
