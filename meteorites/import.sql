@@ -42,5 +42,5 @@ SELECT "name", "class", "mass", "discovery, "year", "lat", "long" FROM "meteorit
 WHERE "nametype" != '%relict%'
 ORDER BY "year" ASC, "name" ASC;
 
-DROP TAABLE "meteorites_temp";
+DROP TABLE "meteorites_temp";
 
