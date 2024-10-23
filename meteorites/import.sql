@@ -44,7 +44,7 @@ CREATE TABLE "meteorites"(
 
 INSERT INTO "meteorites"("name", "class", "mass", "discovery", "year", "lat", "long")
 SELECT "name", "class", "mass", "discovery", "year", "lat", "long" FROM "meteorites_temp"
-WHERE "nametype" != '%relict%'
+WHERE "nametype" NOT LIKE '%relict%'
 ORDER BY "year" ASC, "name" ASC;
 
 
