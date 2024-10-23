@@ -46,11 +46,8 @@ SELECT
 FROM
     "meteorites_temp"
 WHERE
-    "nametype" != 'Relict' AND
-    ("mass" IS NOT NULL OR "lat" IS NOT NULL OR "long" IS NOT NULL) -- Elimina registros sem dados importantes
-ORDER BY
-    year ASC,
-    name ASC;
+    "nametype" != 'Relict'
+ORDER BY "year" ASC, "name" ASC;
 
 -- Atualizar a nova tabela com IDs únicos
 WITH OrderedMeteorites AS (
