@@ -15,9 +15,6 @@ INSERT INTO "triplets"("sentence_id", "start_char", "lenght") VALUES
 (3041, 14, 5);
 
 CREATE VIEW "message" AS
-SELECT "sentence" AS "phrase" FROM "sentences"
-WHERE substr("sentence", (
-    SELECT substr("sentence", 14, 98) FROM "sentences"
-),
-4);
+SELECT substr("sentence", "start_char", "lenght") AS "phrase" FROM "triplets"
+JOIN "sentences" ON "sentences"."id" = "triplets"."sentence_id";
 
