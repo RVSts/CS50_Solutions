@@ -1,2 +1,3 @@
 CREATE VIEW "rural" AS
-SELECT 
+SELECT * FROM "census"
+WHERE "
