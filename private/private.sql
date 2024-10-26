@@ -1,2 +1,3 @@
 CREATE VIEW "message" AS
-SELECT "phrase" 
+SELECT "sentence" AS "phrase" FROM "sentences"
+WHERE "id" = 14
