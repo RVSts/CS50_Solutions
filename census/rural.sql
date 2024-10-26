@@ -1,1 +1,1 @@
-SELECT * FROM "census";
+CREATE VIEW 
