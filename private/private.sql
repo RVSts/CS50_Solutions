@@ -1,6 +1,6 @@
 CREATE TABLE "triplets"(
-    "sentence_id" INTEGER
-    "start_char" INTEGER
+    "sentence_id" INTEGER,
+    "start_char" INTEGER,
     "lenght" INTEGER
 );
 
