@@ -1,3 +1,3 @@
 CREATE VIEW "rural" AS
 SELECT * FROM "census"
-WHERE "
+WHERE "locality" LIKE "%Rural%";
