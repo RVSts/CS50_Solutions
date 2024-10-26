@@ -1,6 +1,4 @@
 CREATE VIEW "message" AS
 SELECT "sentence" AS "phrase" FROM "sentences"
-WHERE "id" IN(
-    SELECT "id" FROM "sentences"
-    WHERE "id" = '14' OR "id" = '114' OR 'id'
-)
+WHERE substr("sentence", 14, 3)substr("sentence", 1, 2)substr("sentence", 1, 2)substr("sentence", 1, 2)substr("sentence", 1, 2)substr("sentence", 1, 2)substr("sentence", 1, 2)
+
