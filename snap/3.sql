@@ -1,0 +1,3 @@
+EXPLAIN QUERY PLAN
+SELECT "id" FROM "users"
+WHERE "
