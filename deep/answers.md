@@ -18,4 +18,4 @@ However, this approach can cause significant problems in specific situations, re
 
 TODO Adopting hash partitioning can significantly reduce query complexity and facilitate access to specific data across partitions. It tends to distribute data uniformly, helping to avoid issues related to data imbalance. The effectiveness of this approach relies on the quality of the hash function used, which is crucial for ensuring effective data distribution and minimizing future maintenance problems. Additionally, hash partitioning allows for the selection of specific values to generate corresponding hash values, making it a flexible option.
 
-
+However, hash partitioning is not without its challenges. The requirement for a well-designed hash function is essential, as a poor implementation can lead to uneven data distribution and potential performance issues. Furthermore, this approach does not necessitate a pre-established amount of data for each value, which can lead to complications if the data distribution is not managed properly. Queries that do not utilize the hash key may become more complex, requiring access to multiple partitions.
