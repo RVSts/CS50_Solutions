@@ -16,6 +16,6 @@ However, this approach can cause significant problems in specific situations, re
 
 ## Partitioning by Hash Value
 
-TODO Adopting this approach can help reduce a lot the complexity of queries, even making it easier to know specific data between all partitions. It, just as the random partitioning will make a very well distribion of the data between the partitions, avoiding the overcharge problem.
+TODO Adopting this approach can help reduce a lot the complexity of queries, even making it easier to know specific data between all partitions. It, just as the random partitioning will make a very well distribion of the data between the partitions, avoiding the overcharge problem.Also it is not randomized, since we can choose specific data values to have the specific hash value.
 
-Homever, this approach can
+Homever, this approach will need a pre-stabilished amount of data for each value, even it is not being used. This is done to have the hash value and their specific timestamp. Will be necessary to do a good hsh function, to avoid later problems and headaches in the data structure and maintance.
