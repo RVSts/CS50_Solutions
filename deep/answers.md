@@ -8,7 +8,7 @@ TODO This approach helps increase performance because it allows queries to be ma
 
 However, it can introduce a lot of additional complexity, requiring more planning time. It also adds to maintenance costs. A clear problem is the structural interdependence between the partitions and their data.
 
-Homever, it can become harder to introduce 
+Homever, it can become harder to introduce queries because the fact the data is randomized. It will require more planning time. This also increase the structural interdependence between the partitions.
 
 ## Partitioning by Hour
 
