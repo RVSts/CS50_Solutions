@@ -4,7 +4,7 @@ In this problem, you'll write freeform responses to the questions provided in th
 
 ## Random Partitioning
 
-TODO
+TODO This approach helpss in the increase of performance, because it allows queries to be made in lower 
 
 ## Partitioning by Hour
 
@@ -13,4 +13,3 @@ TODO
 ## Partitioning by Hash Value
 
 TODO
-j
