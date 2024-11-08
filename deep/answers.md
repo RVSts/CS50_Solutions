@@ -16,6 +16,6 @@ However, this approach can cause significant problems in specific situations, re
 
 ## Partitioning by Hash Value
 
-TODO Adopting this approach can help reduce a lot the complexity of queries, even making it easier to know specific data between all partitions. It, just as the random partitioning will make a very well distribion of the data between the partitions, avoiding the overcharge problem.Also it is not randomized, since we can choose specific data values to have the specific hash value.
+TODO Adopting hash partitioning can significantly reduce query complexity and facilitate access to specific data across partitions. It tends to distribute data uniformly, helping to avoid issues related to data imbalance. The effectiveness of this approach relies on the quality of the hash function used, which is crucial for ensuring effective data distribution and minimizing future maintenance problems. Additionally, hash partitioning allows for the selection of specific values to generate corresponding hash values, making it a flexible option.
 
-Homever, this approach will need a pre-stabilished amount of data for each value, even it is not being used. This is done to have the hash value and their specific timestamp. Will be necessary to do a good hsh function, to avoid later problems and headaches in the data structure and maintance.
+
