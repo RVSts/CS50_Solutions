@@ -10,7 +10,7 @@ However, it can become harder to introduce queries due to the fact that the data
 
 ## Partitioning by Hour
 
-TODO
+TODO Adopting this approach can help in reducing the complexity of the queries, because it make more easier to do query in specific partitions using the time of the day as its main function. It also helps in
 
 ## Partitioning by Hash Value
 
