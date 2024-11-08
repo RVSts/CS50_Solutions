@@ -4,8 +4,9 @@ In this problem, you'll write freeform responses to the questions provided in th
 
 ## Random Partitioning
 
-TODO This approach helps in the increase of performance, because it allows queries to be made in smaller sets, reducing the answer time. It also helps in horizontal scalability, making easier to add new partitions. Also helping with the management of this data, because it can store large data more easily.
-Otherwise it can add a lot of additional complexity, requering more planning time. It also add in maintance cost. A clear problem is the structure interdepence between the partitions and their data.
+TODO This approach helps increase performance because it allows queries to be made on smaller sets, reducing response time. It also aids in horizontal scalability, making it easier to add new partitions. Additionally, it helps with the management of this data, as it can store large amounts of data more easily.
+
+However, it can introduce a lot of additional complexity, requiring more planning time. It also adds to maintenance costs. A clear problem is the structural interdependence between the partitions and their data.
 
 ## Partitioning by Hour
 
