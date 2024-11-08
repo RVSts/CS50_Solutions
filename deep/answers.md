@@ -10,7 +10,9 @@ However, it can become harder to introduce queries due to the fact that the data
 
 ## Partitioning by Hour
 
-TODO Adopting this approach can help in reducing the complexity of the queries, because it make more easier to do query in specific partitions using the time of the day as its main function. It also helps in
+TODO Adopting this approach can help in reducing the complexity of the queries, because it make more easier to do query in specific partitions using the time of the day as its main function. This make the data have more correlations between themselves than on the random partitioning.
+
+Homever, this data can cause a big problem in specific situetions, requering more planning and maybe more equipaments and costs. This happens because 
 
 ## Partitioning by Hash Value
 
