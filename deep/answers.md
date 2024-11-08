@@ -16,4 +16,6 @@ However, this approach can cause significant problems in specific situations, re
 
 ## Partitioning by Hash Value
 
-TODO
+TODO Adopting this approach can help reduce a lot the complexity of queries, even making it easier to know specific data between all partitions. It, just as the random partitioning will make a very well distribion of the data between the partitions, avoiding the overcharge problem.
+
+Homever, this approach can
