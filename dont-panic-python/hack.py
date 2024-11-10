@@ -5,7 +5,8 @@ password = input("Enter a password: ")
 db.execute(
     """
     UPDATE "users"
-    SET "password" = 'oops!'
+    SET "password" = ?
     WHERE "username" = 'admin';
-    """
+    """,
+    password
 )
