@@ -1,6 +1,9 @@
 CREATE INDEX "student_index" ON "students"("id");
 
-DROP INDEX "student_index";
+CREATE INDEX "course_dep_num_sem_index" ON "courses"("department", "number", "semester");
 
-CREATE INDEX "student_2023_index" ON "students"("id")
-WHERE 
+CREATE INDEX "course_semester_index" ON "courses"("semester");
+
+CREATE INDEX "satisfies_course_index" ON "satisfies"("course_id");
+
+CREATE INDEX "enrollment_student_index" ON "enrollments"("student_id");
