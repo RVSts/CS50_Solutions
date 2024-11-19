@@ -1,6 +1,6 @@
 # Design Document
 
-By YOUR NAME HERE
+By RIAN VASCONCELOS DOS SANTOS
 
 Video overview: <URL HERE>
 
