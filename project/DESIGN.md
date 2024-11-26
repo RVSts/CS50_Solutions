@@ -6,7 +6,9 @@
 
 ## Scope
 
-### The propose of this database is to easily store all informations about all supermarkets at a specific location. This helps in price comparison, market analysis in identifying trends, inventory optimization and 
+### The propose of this database is to easily store all informations about all supermarkets at a specific location. This helps in price comparison, market analysis in identifying trends, inventory optimization, etc. As such, included in the database's scope is:
+
+
 
 In this section you should answer the following questions:
 
