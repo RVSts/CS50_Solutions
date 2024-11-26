@@ -1,8 +1,8 @@
 # Design Document
 
-By RIAN VASCONCELOS DOS SANTOS
+### By Rian Vasconcelos dos Santos
 
-Video overview: <URL HERE>
+## Video overview: <URL HERE>
 
 ## Scope
 
