@@ -50,3 +50,4 @@ In this section you should answer the following questions:
 
 * What are the limitations of your design?
 * What might your database not be able to represent very well?
+
