@@ -17,11 +17,13 @@ CREATE TABLE Customers (
 )
 
 CREATE TABLE Suppliers (
-    
+    id PRIMARY KEY smallserial
+    supplier_name varchar(30)
 )
 
 CREATE TABLE Supermarket_Supplier (
-
+    id PRIMARY KEY smallserial
+    
 )
 
 
