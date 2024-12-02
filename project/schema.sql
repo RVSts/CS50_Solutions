@@ -13,8 +13,9 @@ CREATE TABLE Customers (
     username varchar(30)
     email varchar(100)
     phone varchar (12)
-    supermarket_id FOREIGN KEY NOT NULL
-)
+    supermarket_id smallserial NOT NULL
+    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
+);
 
 CREATE TABLE Suppliers (
     id PRIMARY KEY smallserial
@@ -23,9 +24,11 @@ CREATE TABLE Suppliers (
 
 CREATE TABLE Supermarket_Supplier (
     id PRIMARY KEY smallserial
-    supermarket_id FOREIGN KEY NOT NULL
-    supplier_id
-)
+    supermarket_id smallserial NOT NULL
+    supplier_id smallserial NOT NULL
+    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
+    FOREIGN KEY (supplier_id) REFERENCES TO Suppliers(id)
+);
 
 
 CREATE TABLE Trademarks (
