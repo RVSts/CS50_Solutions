@@ -44,3 +44,35 @@ CREATE TABLE Products (
 )
 
 
+CREATE TABLE Price_History (
+
+)
+
+CREATE TABLE Departments (
+
+)
+
+CREATE TABLE Job_Titles (
+
+)
+
+CREATE TABLE Employees (
+
+)
+
+CREATE TABLE Promotions (
+
+)
+
+
+CREATE TABLE Sales (
+
+)
+
+CREATE TABLE Sales_Products (
+
+)
+
+CREATE TABLE Reviews (
+    
+)
