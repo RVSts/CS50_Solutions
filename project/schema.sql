@@ -23,7 +23,8 @@ CREATE TABLE Suppliers (
 
 CREATE TABLE Supermarket_Supplier (
     id PRIMARY KEY smallserial
-    
+    supermarket_id FOREIGN KEY NOT NULL
+    supplier_id
 )
 
 
