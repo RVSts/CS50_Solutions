@@ -12,11 +12,12 @@ CREATE TABLE Customers (
     last_name varchar(60)
     username varchar(30)
     email varchar(100)
-
+    phone varchar (12)
+    supermarket_id FOREIGN KEY NOT NULL
 )
 
 CREATE TABLE Suppliers (
-
+    
 )
 
 CREATE TABLE Supermarket_Supplier (
