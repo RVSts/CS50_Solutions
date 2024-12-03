@@ -129,5 +129,7 @@ CREATE TABLE Sales_Products (
 );
 
 CREATE TABLE Reviews (
-
+    id PRIMARY KEY serial,
+    review_date datetime,
+    rate 
 );
