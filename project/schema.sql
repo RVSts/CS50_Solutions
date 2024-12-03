@@ -125,11 +125,18 @@ CREATE TABLE Sales_Products (
     sales_id bigserial NOT NULL,
     product_id serial NOT NULL,
     quantity smallint,
-    unit_price numeric(4,2)
+    unit_price numeric(4,2),
+    FOREIGN KEY (sales_id) REFERENCES TO Sales(id),
+    FOREIGN KEY (product_id) REFERENCES TO Products(id)
 );
 
 CREATE TABLE Reviews (
     id PRIMARY KEY serial,
     review_date datetime,
-    rate 
+    rate int check (rate between 1 and 5),
+    comment varchar(500),
+    customer_id serial NOT NULL,
+    supermarket_id smallserial NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES TO Customers(id),
+    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
 );
