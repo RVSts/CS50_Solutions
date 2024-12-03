@@ -140,3 +140,9 @@ CREATE TABLE Reviews (
     FOREIGN KEY (customer_id) REFERENCES TO Customers(id),
     FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
 );
+
+
+
+CREATE ROLE
+
+CREATE ROLE
