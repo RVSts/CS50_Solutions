@@ -62,7 +62,7 @@ CREATE TABLE Products (
     trademark_id smallint NOT NULL,
     category_id smallint NOT NULL,
     supermarket_id smallint NOT NULL,
-    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id),
+    FOREIGN KEY (trademark_id) REFERENCES Trademarks(id),
     FOREIGN KEY (category_id) REFERENCES Categories(id),
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
