@@ -1,13 +1,13 @@
 -- In this SQL file, write (and comment!) the schema of your database, including the CREATE TABLE, CREATE INDEX, CREATE VIEW, etc. statements that compose it
 
 CREATE TABLE Supermarkets (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY,
     supermarket_name varchar(30),
     address varchar(120)
 );
 
 CREATE TABLE Customers (
-    id PRIMARY KEY serial,
+    id serial PRIMARY KEY,
     first_name varchar(30),
     last_name varchar(60),
     username varchar(30),
@@ -16,41 +16,41 @@ CREATE TABLE Customers (
 );
 
 CREATE TABLE Supermarkets_Customers(
-    id PRIMARY KEY serial,
-    supermarket_id smallserial NOT NULL,
-    customer_id serial NOT NULL,
+    id serial PRIMARY KEY,
+    supermarket_id smallint NOT NULL CHECK (supermarket_id >= 0),
+    customer_id int NOT NULL CHECK (customer_id >= 0),
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
 
 CREATE TABLE Suppliers (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY,
     supplier_name varchar(30)
 )
 
 CREATE TABLE Supermarket_Supplier (
     id PRIMARY KEY smallserial,
-    supermarket_id smallserial NOT NULL,
-    supplier_id smallserial NOT NULL,
+    supermarket_id smallint NOT NULL CHECK (supermarket_id >= 0),
+    supplier_id smallint NOT NULL CHECK (supplier_id >= 0),
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
 
 CREATE TABLE Trademarks (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY ,
     trademark_name varchar(30),
-    suppier_id smallserial NOT NULL,
+    suppier_id smallint NOT NULL CHECK (supplier_id >= 0),
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
 CREATE TABLE Categories (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY ,
     category_name varchar(20)
 );
 
 CREATE TABLE Products (
-    id PRIMARY KEY serial,
+    id serial PRIMARY KEY,
     product_name varchar(60),
     price numeric(4,2),
     quantity smallint,
@@ -59,8 +59,8 @@ CREATE TABLE Products (
     expiration_date date,
     created_at timestamp,
     updated_at timestamp,
-    trademark_id smallserial NOT NULL,
-    category_id smallserial NOT NULL,
+    trademark_id smallint NOT NULL,
+    category_id smallint NOT NULL,
     supermarket_id smallserial NOT NULL,
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id),
     FOREIGN KEY (category_id) REFERENCES Categories(id),
