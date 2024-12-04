@@ -59,9 +59,9 @@ CREATE TABLE Products (
     expiration_date date,
     created_at timestamp,
     updated_at timestamp,
-    trademark_id smallint NOT NULL,
-    category_id smallint NOT NULL,
-    supermarket_id smallserial NOT NULL,
+    trademark_id smallint NOT NULL CHECK (trademark_id >= 0),
+    category_id smallint NOT NULL CHECK (category_id >= 0),
+    supermarket_id smallint NOT NULL CHECK (supermarket_id >= 0),
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id),
     FOREIGN KEY (category_id) REFERENCES Categories(id),
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
@@ -69,25 +69,25 @@ CREATE TABLE Products (
 
 
 CREATE TABLE Price_History (
-    id PRIMARY KEY serial,
+    id serial PRIMARY KEY,
     price numeric(4,2),
     date_time datetime,
-    product_id serial NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES TO Products(id)
+    product_id int NOT NULL CHECK (product_id >= 0),
+    FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
 CREATE TABLE Departments (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY,
     department_name VARCHAR(20),
-    supermarket_id smallserial NOT NULL,
-    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
+    supermarket_id smallint NOT NULL CHECK (supermarket_id >= 0),
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
 
 CREATE TABLE Job_Titles (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY,
     job_title_name varchar(20),
     department_id smallserial NOT NULL,
-    FOREIGN KEY (department_id) REFERENCES TO Departments(id)
+    FOREIGN KEY (department_id) REFERENCES Departments(id)
 );
 
 CREATE TABLE Employees (
