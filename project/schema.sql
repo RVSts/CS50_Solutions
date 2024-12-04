@@ -105,7 +105,7 @@ CREATE TABLE Employees (
 
 CREATE TABLE Promotions (
     id smallserial PRIMARY KEY,
-    type_name ENUM(),
+    name ENUM(),
     price numeric(4,2) CHECK (price >= 0),
     starting_date timestamp,
     ending_date timestamp,
@@ -138,7 +138,7 @@ CREATE TABLE Sales_Products (
 
 CREATE TABLE Reviews (
     id serial PRIMARY KEY,
-    review_date timestamp,
+    date timestamp,
     rate int CHECK (rate between 1 and 5),
     comment varchar(500),
     customer_id int NOT NULL,
