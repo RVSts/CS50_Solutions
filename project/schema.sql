@@ -52,9 +52,9 @@ CREATE TABLE Categories (
 CREATE TABLE Products (
     id serial PRIMARY KEY,
     product_name varchar(60),
-    price numeric(4,2),
-    quantity smallint,
-    product_weight numeric(3,3),
+    price numeric(4,2) CHECK (quantity >= 0),
+    quantity smallint CHECK (quantity >= 0),
+    product_weight numeric(6,3),
     unit_of_measure varchar(2),
     expiration_date date,
     created_at timestamp,
@@ -106,7 +106,7 @@ CREATE TABLE Employees (
 CREATE TABLE Promotions (
     id smallserial PRIMARY KEY,
     type_name ENUM(),
-    price numeric(4,2),
+    price numeric(4,2) CHECK (price >= 0),
     starting_date timestamp,
     ending_date timestamp,
     supermarket_id smallint NOT NULL,
@@ -130,8 +130,8 @@ CREATE TABLE Sales_Products (
     date_time timestamp,
     sales_id bigint NOT NULL,
     product_id int NOT NULL,
-    quantity smallint,
-    unit_price numeric(4,2),
+    quantity smallint CHECK (quantity >= 0),
+    unit_price numeric(4,2) CHECK (unit_price >= 0),
     FOREIGN KEY (sales_id) REFERENCES Sales(id),
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
