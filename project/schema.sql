@@ -86,29 +86,29 @@ CREATE TABLE Departments (
 CREATE TABLE Job_Titles (
     id smallserial PRIMARY KEY,
     job_title_name varchar(20),
-    department_id smallserial NOT NULL,
+    department_id smallint NOT NULL CHECK (department_id >= 0),
     FOREIGN KEY (department_id) REFERENCES Departments(id)
 );
 
 CREATE TABLE Employees (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY ,
     first_name varchar(30),
     last_name varchar(60),
-    job_title_id smallserial NOT NULL,
+    job_title_id smallint NOT NULL CHECK (job_title_id >= 0),
     starting_date date,
     ending_date date,
-    supermarket_id smallserial NOT NULL,
-    department_id smallserial NOT NULL,
-    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id),
-    FOREIGN KEY (department_id) REFERENCES TO Departments(id)
+    supermarket_id smallint NOT NULL CHECK (suppermrket_id >= 0),
+    department_id smallint NOT NULL CHECK (department_id >= 0),
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
+    FOREIGN KEY (department_id) REFERENCES Departments(id)
 );
 
 CREATE TABLE Promotions (
-    id PRIMARY KEY smallserial,
-    type_name,
+    id smallserial PRIMARY KEY,
+    type_name ENUM(),
     price numeric(4,2),
-    starting_date datetime,
-    ending_date datetime,
+    starting_date timestamp,
+    ending_date timestamp,
     supermarket_id smallserial NOT NULL,
     trademark_id smallserial NOT NULL,
     products_id serial NOT NULL,
