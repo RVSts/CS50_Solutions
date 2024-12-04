@@ -55,7 +55,7 @@ CREATE TABLE Products (
     price numeric(4,2) CHECK (quantity >= 0),
     quantity smallint CHECK (quantity >= 0),
     product_weight numeric(6,3),
-    unit_of_measure varchar(2),
+    unit_of_measure varchar(10),
     expiration_date date,
     created_at timestamp,
     updated_at timestamp,
