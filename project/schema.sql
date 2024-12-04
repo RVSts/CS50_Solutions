@@ -12,9 +12,15 @@ CREATE TABLE Customers (
     last_name varchar(60),
     username varchar(30),
     email varchar(100),
-    phone varchar(12),
+    phone varchar(12)
+);
+
+CREATE TABLE Supermarkets_Customers(
+    id PRIMARY KEY serial,
     supermarket_id smallserial NOT NULL,
-    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
+    customer_id serial NOT NULL,
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
+    FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
 
 CREATE TABLE Suppliers (
@@ -26,8 +32,8 @@ CREATE TABLE Supermarket_Supplier (
     id PRIMARY KEY smallserial,
     supermarket_id smallserial NOT NULL,
     supplier_id smallserial NOT NULL,
-    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id),
-    FOREIGN KEY (supplier_id) REFERENCES TO Suppliers(id)
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
 
@@ -35,7 +41,7 @@ CREATE TABLE Trademarks (
     id PRIMARY KEY smallserial,
     trademark_name varchar(30),
     suppier_id smallserial NOT NULL,
-    FOREIGN KEY (supplier_id) REFERENCES TO Suppliers(id)
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
 CREATE TABLE Categories (
@@ -51,14 +57,14 @@ CREATE TABLE Products (
     product_weight numeric(3,3),
     unit_of_measure varchar(2),
     expiration_date date,
-    created_at datetime,
-    updated_at datetime,
+    created_at timestamp,
+    updated_at timestamp,
     trademark_id smallserial NOT NULL,
     category_id smallserial NOT NULL,
     supermarket_id smallserial NOT NULL,
-    FOREIGN KEY (supplier_id) REFERENCES TO Suppliers(id),
-    FOREIGN KEY (category_id) REFERENCES TO,
-    FOREIGN KEY (supermarket_id) REFERENCES TO Supermarkets(id)
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id),
+    FOREIGN KEY (category_id) REFERENCES Categories(id),
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
 
 
