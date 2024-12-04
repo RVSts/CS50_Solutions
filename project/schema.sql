@@ -130,8 +130,8 @@ CREATE TABLE Sales_Products (
     date_time timestamp,
     sales_id bigint NOT NULL,
     product_id int NOT NULL,
-    quantity smallint CHECK (quantity >= 0),
-    unit_price numeric(4,2) CHECK (unit_price >= 0),
+    quantity smallint NOT NULL CHECK (quantity >= 0),
+    unit_price numeric(4,2) NOT NULL CHECK (unit_price >= 0),
     FOREIGN KEY (sales_id) REFERENCES Sales(id),
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
