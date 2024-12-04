@@ -71,7 +71,7 @@ CREATE TABLE Products (
 CREATE TABLE Price_History (
     id serial PRIMARY KEY,
     price numeric(4,2),
-    date_time datetime,
+    date_time timestamp,
     product_id int NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
