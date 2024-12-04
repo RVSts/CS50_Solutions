@@ -2,7 +2,7 @@
 
 CREATE TABLE Supermarkets (
     id smallserial PRIMARY KEY,
-    supermarket_name varchar(30),
+    name varchar(30),
     address varchar(120)
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE Supermarkets_Customers(
 
 CREATE TABLE Suppliers (
     id smallserial PRIMARY KEY,
-    supplier_name varchar(30)
+    name varchar(30)
 );
 
 CREATE TABLE Supermarket_Supplier (
@@ -39,21 +39,21 @@ CREATE TABLE Supermarket_Supplier (
 
 CREATE TABLE Trademarks (
     id smallserial PRIMARY KEY ,
-    trademark_name varchar(30),
+    name varchar(30),
     supplier_id smallint NOT NULL,
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
 CREATE TABLE Categories (
     id smallserial PRIMARY KEY,
-    category_name varchar(20)
+    name varchar(20)
 );
 
 CREATE TABLE Products (
     id serial PRIMARY KEY,
-    product_name varchar(60),
-    price numeric(4,2) CHECK (quantity >= 0),
-    quantity smallint CHECK (quantity >= 0),
+    name varchar(60),
+    price numeric(4,2) NOT NULL CHECK (quantity >= 0),
+    quantity smallint NOT NULL CHECK (quantity >= 0),
     product_weight numeric(6,3),
     unit_of_measure varchar(10),
     expiration_date date,
@@ -78,14 +78,14 @@ CREATE TABLE Price_History (
 
 CREATE TABLE Departments (
     id smallserial PRIMARY KEY,
-    department_name VARCHAR(20),
+    name VARCHAR(20),
     supermarket_id smallint NOT NULL,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
 
 CREATE TABLE Job_Titles (
     id smallserial PRIMARY KEY,
-    job_title_name varchar(20),
+    name varchar(20),
     department_id smallint NOT NULL,
     FOREIGN KEY (department_id) REFERENCES Departments(id)
 );
@@ -106,7 +106,7 @@ CREATE TABLE Employees (
 CREATE TABLE Promotions (
     id smallserial PRIMARY KEY,
     name ENUM(),
-    price numeric(4,2) CHECK (price >= 0),
+    price numeric(4,2) NOT NULL CHECK (price >= 0),
     starting_date timestamp,
     ending_date timestamp,
     supermarket_id smallint NOT NULL,
