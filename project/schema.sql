@@ -40,7 +40,7 @@ CREATE TABLE Supermarket_Supplier (
 CREATE TABLE Trademarks (
     id smallserial PRIMARY KEY ,
     trademark_name varchar(30),
-    suppier_id smallint NOT NULL,
+    supplier_id smallint NOT NULL,
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
