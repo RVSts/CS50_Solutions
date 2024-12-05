@@ -153,4 +153,3 @@ CREATE TABLE Reviews (
     FOREIGN KEY (customer_id) REFERENCES Customers(id),
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
-
