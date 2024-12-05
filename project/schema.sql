@@ -87,6 +87,7 @@ CREATE TABLE Price_History (
 CREATE TABLE Departments (
     id smallserial PRIMARY KEY,
     name varchar(20),
+    supermarket_id smallint NOT NULL,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     UNIQUE(name, supermarket_id) -- Ensure unique department names per supermarket
 );
