@@ -80,6 +80,7 @@ CREATE TABLE Price_History (
     price numeric(4,2),
     date_time timestamp,
     product_id int NOT NULL,
+    is_active boolean DEFAULT TRUE,
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
