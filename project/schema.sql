@@ -10,8 +10,8 @@ CREATE TABLE Customers (
     id serial PRIMARY KEY,
     first_name varchar(30),
     last_name varchar(60),
-    username varchar(30),
-    email varchar(100),
+    username varchar(30) UNIQUE,
+    email varchar(100) UNIQUE,
     phone varchar(12)
 );
 
