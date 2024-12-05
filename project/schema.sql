@@ -179,5 +179,6 @@ CREATE INDEX idx_sales_products_product_id ON Sales_Products (product_id);
 CREATE INDEX idx_products_expiration_date ON Products (expiration_date);
 
 
+-- Roles for user restrictions
 
---
+CREATE ROLE 
