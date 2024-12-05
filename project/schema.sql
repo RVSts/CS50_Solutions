@@ -174,6 +174,7 @@ CREATE INDEX idx_price_history_product_id ON Price_History (product_id);
 -- Indexes for Sales_Products table
 CREATE INDEX idx_sales_products_sales_id ON Sales_Products (sales_id);
 CREATE INDEX idx_sales_products_product_id ON Sales_Products (product_id);
+CREATE INDEX idx_products_expiration_date ON Products (expiration_date);
 
 
 
