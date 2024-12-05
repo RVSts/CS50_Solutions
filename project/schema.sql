@@ -123,7 +123,8 @@ CREATE TABLE Promotions (
     product_id int NOT NULL,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (trademark_id) REFERENCES Trademarks(id),
-    FOREIGN KEY (product_id) REFERENCES Products(id)
+    FOREIGN KEY (product_id) REFERENCES Products(id),
+    CHECK (starting_date < ending_date)
 );
 
 -- Sales table
