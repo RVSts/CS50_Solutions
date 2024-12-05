@@ -1,3 +1,6 @@
+-- Define custom ENUM types
+CREATE TYPE unit_of_measure_type AS ENUM ('kg', 'g', 'l', 'ml', 'unit');
+
 -- Tables without dependencies
 CREATE TABLE Supermarkets (
     id smallserial PRIMARY KEY,
@@ -56,7 +59,7 @@ CREATE TABLE Products (
     price numeric(6,2) NOT NULL CHECK (price >= 0),
     quantity smallint NOT NULL CHECK (quantity >= 0),
     product_weight numeric(6,3),
-    unit_of_measure varchar(10),
+    unit_of_measure_type,
     expiration_date date,
     created_at timestamp,
     updated_at timestamp,
