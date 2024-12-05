@@ -117,8 +117,8 @@ CREATE TABLE Promotions (
     id smallserial PRIMARY KEY,
     type promotion_type NOT NULL, -- Define the correct type for name
     price numeric(4,2) NOT NULL CHECK (price >= 0),
-    starting_date timestamp,
-    ending_date timestamp,
+    starting_date timestamp NOT NULL,
+    ending_date timestamp NOT NULL,
     supermarket_id smallint NOT NULL,
     trademark_id smallint NOT NULL,
     product_id int NOT NULL,
