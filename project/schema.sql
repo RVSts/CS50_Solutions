@@ -124,6 +124,7 @@ CREATE TABLE Promotions (
     supermarket_id smallint NOT NULL,
     trademark_id smallint NOT NULL,
     product_id int NOT NULL,
+    is_active boolean DEFAULT TRUE,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (trademark_id) REFERENCES Trademarks(id),
     FOREIGN KEY (product_id) REFERENCES Products(id),
