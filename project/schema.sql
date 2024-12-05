@@ -164,7 +164,6 @@ CREATE TABLE Reviews (
 );
 
 
-
 -- Indexes for Supermarkets_Customers table
 CREATE INDEX idx_supermarkets_customers_supermarket_id ON Supermarkets_Customers (supermarket_id);
 CREATE INDEX idx_supermarkets_customers_customer_id ON Supermarkets_Customers (customer_id);
@@ -178,4 +177,4 @@ CREATE INDEX idx_sales_products_product_id ON Sales_Products (product_id);
 
 
 
--- 
+--
