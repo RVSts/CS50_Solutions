@@ -53,7 +53,7 @@ CREATE TABLE Supermarket_Supplier (
 CREATE TABLE Products (
     id serial PRIMARY KEY,
     name varchar(60),
-    price numeric(4,2) NOT NULL CHECK (quantity >= 0),
+    price numeric(6,2) NOT NULL CHECK (price >= 0),
     quantity smallint NOT NULL CHECK (quantity >= 0),
     product_weight numeric(6,3),
     unit_of_measure varchar(10),
