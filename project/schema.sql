@@ -6,19 +6,22 @@ CREATE TYPE promotion_type AS ENUM ('discount', 'bundle');
 
 -- Tables without dependencies
 CREATE TABLE Supermarkets (
-    id smallserial PRIMARY KEY,
+    id smallserial,
     name varchar(30),
-    address varchar(120)
+    address varchar(120),
+    CONSTRAINT suppermarket_key PRIMARY KEY (id)
 );
 
 CREATE TABLE Suppliers (
-    id smallserial PRIMARY KEY,
-    name varchar(30)
+    id smallserial,
+    name varchar(30),
+    CONSTRAINT supplier_key PRIMARY KEY (id)
 );
 
 CREATE TABLE Categories (
-    id smallserial PRIMARY KEY,
-    name varchar(20)
+    id smallserial,
+    name varchar(20),
+    CONSTRAINT category_key PRIMARY KEY (id)
 );
 
 CREATE TABLE Trademarks (
@@ -181,4 +184,4 @@ CREATE INDEX idx_products_expiration_date ON Products (expiration_date);
 
 -- Roles for user restrictions
 
-CREATE ROLE 
+CREATE ROLE
