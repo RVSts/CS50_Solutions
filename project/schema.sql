@@ -1,5 +1,4 @@
--- In this SQL file, write (and comment!) the schema of your database, including the CREATE TABLE, CREATE INDEX, CREATE VIEW, etc. statements that compose it
-
+-- Tables without dependencies
 CREATE TABLE Supermarkets (
     id smallserial PRIMARY KEY,
     name varchar(30),
@@ -17,12 +16,13 @@ CREATE TABLE Categories (
 );
 
 CREATE TABLE Trademarks (
-    id smallserial PRIMARY KEY ,
+    id smallserial PRIMARY KEY,
     name varchar(30),
     supplier_id smallint NOT NULL,
-    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id) -- Reference to Suppliers
 );
 
+-- Customers table
 CREATE TABLE Customers (
     id serial PRIMARY KEY,
     first_name varchar(30),
@@ -32,23 +32,24 @@ CREATE TABLE Customers (
     phone varchar(12)
 );
 
-CREATE TABLE Supermarkets_Customers(
+-- Relationship tables
+CREATE TABLE Supermarkets_Customers (
     id serial PRIMARY KEY,
     supermarket_id smallint NOT NULL,
-    customer_id int NOT NULL CHECK,
+    customer_id int NOT NULL,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
 
 CREATE TABLE Supermarket_Supplier (
-    id PRIMARY KEY smallserial,
+    id smallserial PRIMARY KEY,
     supermarket_id smallint NOT NULL,
     supplier_id smallint NOT NULL,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
-
+-- Products table
 CREATE TABLE Products (
     id serial PRIMARY KEY,
     name varchar(60),
@@ -67,7 +68,7 @@ CREATE TABLE Products (
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
 
-
+-- Price History table
 CREATE TABLE Price_History (
     id serial PRIMARY KEY,
     price numeric(4,2),
@@ -76,6 +77,7 @@ CREATE TABLE Price_History (
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
+-- Departments table
 CREATE TABLE Departments (
     id smallserial PRIMARY KEY,
     name VARCHAR(20),
@@ -83,6 +85,7 @@ CREATE TABLE Departments (
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
 
+-- Job Titles table
 CREATE TABLE Job_Titles (
     id smallserial PRIMARY KEY,
     name varchar(20),
@@ -90,8 +93,9 @@ CREATE TABLE Job_Titles (
     FOREIGN KEY (department_id) REFERENCES Departments(id)
 );
 
+-- Employees table
 CREATE TABLE Employees (
-    id smallserial PRIMARY KEY ,
+    id smallserial PRIMARY KEY,
     first_name varchar(30),
     last_name varchar(60),
     job_title_id smallint NOT NULL,
@@ -103,21 +107,22 @@ CREATE TABLE Employees (
     FOREIGN KEY (department_id) REFERENCES Departments(id)
 );
 
+-- Promotions table
 CREATE TABLE Promotions (
     id smallserial PRIMARY KEY,
-    name ENUM(),
+    name varchar(30), -- Define the correct type for name
     price numeric(4,2) NOT NULL CHECK (price >= 0),
     starting_date timestamp,
     ending_date timestamp,
     supermarket_id smallint NOT NULL,
     trademark_id smallint NOT NULL,
-    products_id int NOT NULL,
+    product_id int NOT NULL,
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (trademark_id) REFERENCES Trademarks(id),
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
-
+-- Sales table
 CREATE TABLE Sales (
     id bigserial PRIMARY KEY,
     date_time timestamp,
@@ -125,6 +130,7 @@ CREATE TABLE Sales (
     FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
 
+-- Sales Products table
 CREATE TABLE Sales_Products (
     id bigserial PRIMARY KEY,
     date_time timestamp,
@@ -136,6 +142,7 @@ CREATE TABLE Sales_Products (
     FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
+-- Reviews table
 CREATE TABLE Reviews (
     id serial PRIMARY KEY,
     date timestamp,
@@ -147,8 +154,3 @@ CREATE TABLE Reviews (
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
 );
 
-
-
-CREATE ROLE
-
-CREATE ROLE
