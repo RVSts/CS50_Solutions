@@ -2,6 +2,8 @@
 CREATE TYPE unit_of_measure_type AS ENUM ('kg', 'g', 'l', 'ml', 'unit');
 CREATE TYPE promotion_type AS ENUM ('discount', 'bundle');
 
+
+
 -- Tables without dependencies
 CREATE TABLE Supermarkets (
     id smallserial PRIMARY KEY,
@@ -160,3 +162,20 @@ CREATE TABLE Reviews (
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     UNIQUE(customer_id, supermarket_id) -- Ensure one review per customer per supermarket
 );
+
+
+
+-- Indexes for Supermarkets_Customers table
+CREATE INDEX idx_supermarkets_customers_supermarket_id ON Supermarkets_Customers (supermarket_id);
+CREATE INDEX idx_supermarkets_customers_customer_id ON Supermarkets_Customers (customer_id);
+
+-- Indexes for Price_History table
+CREATE INDEX idx_price_history_product_id ON Price_History (product_id);
+
+-- Indexes for Sales_Products table
+CREATE INDEX idx_sales_products_sales_id ON Sales_Products (sales_id);
+CREATE INDEX idx_sales_products_product_id ON Sales_Products (product_id);
+
+
+
+-- 
