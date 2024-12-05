@@ -1,5 +1,6 @@
 -- Define custom ENUM types
 CREATE TYPE unit_of_measure_type AS ENUM ('kg', 'g', 'l', 'ml', 'unit');
+CREATE TYPE promotion_type AS ENUM ('discount', 'bundle');
 
 -- Tables without dependencies
 CREATE TABLE Supermarkets (
@@ -114,7 +115,7 @@ CREATE TABLE Employees (
 -- Promotions table
 CREATE TABLE Promotions (
     id smallserial PRIMARY KEY,
-    name varchar(30), -- Define the correct type for name
+    type promotion_type NOT NULL, -- Define the correct type for name
     price numeric(4,2) NOT NULL CHECK (price >= 0),
     starting_date timestamp,
     ending_date timestamp,
