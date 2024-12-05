@@ -85,7 +85,8 @@ CREATE TABLE Departments (
     id smallserial PRIMARY KEY,
     name VARCHAR(20),
     supermarket_id smallint NOT NULL,
-    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
+    UNIQUE(name, supermarket_id) -- Ensure unique department names per supermarket
 );
 
 -- Job Titles table
@@ -154,5 +155,6 @@ CREATE TABLE Reviews (
     customer_id int NOT NULL,
     supermarket_id smallint NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customers(id),
-    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id)
+    FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
+    UNIQUE(customer_id, supermarket_id) -- Ensure one review per customer per supermarket
 );
