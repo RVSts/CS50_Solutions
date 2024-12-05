@@ -6,6 +6,23 @@ CREATE TABLE Supermarkets (
     address varchar(120)
 );
 
+CREATE TABLE Suppliers (
+    id smallserial PRIMARY KEY,
+    name varchar(30)
+);
+
+CREATE TABLE Categories (
+    id smallserial PRIMARY KEY,
+    name varchar(20)
+);
+
+CREATE TABLE Trademarks (
+    id smallserial PRIMARY KEY ,
+    name varchar(30),
+    supplier_id smallint NOT NULL,
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
+);
+
 CREATE TABLE Customers (
     id serial PRIMARY KEY,
     first_name varchar(30),
@@ -23,11 +40,6 @@ CREATE TABLE Supermarkets_Customers(
     FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
 
-CREATE TABLE Suppliers (
-    id smallserial PRIMARY KEY,
-    name varchar(30)
-);
-
 CREATE TABLE Supermarket_Supplier (
     id PRIMARY KEY smallserial,
     supermarket_id smallint NOT NULL,
@@ -36,18 +48,6 @@ CREATE TABLE Supermarket_Supplier (
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
 );
 
-
-CREATE TABLE Trademarks (
-    id smallserial PRIMARY KEY ,
-    name varchar(30),
-    supplier_id smallint NOT NULL,
-    FOREIGN KEY (supplier_id) REFERENCES Suppliers(id)
-);
-
-CREATE TABLE Categories (
-    id smallserial PRIMARY KEY,
-    name varchar(20)
-);
 
 CREATE TABLE Products (
     id serial PRIMARY KEY,
