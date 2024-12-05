@@ -25,27 +25,30 @@ CREATE TABLE Categories (
 );
 
 CREATE TABLE Trademarks (
-    id smallserial PRIMARY KEY,
+    id smallserial,
     name varchar(30),
     supplier_id smallint NOT NULL,
+    CONSTRAINT trademark_key PRIMARY KEY (id),
     FOREIGN KEY (supplier_id) REFERENCES Suppliers(id) -- Reference to Suppliers
 );
 
 -- Customers table
 CREATE TABLE Customers (
-    id serial PRIMARY KEY,
+    id serial,
     first_name varchar(30),
     last_name varchar(60),
     username varchar(30) UNIQUE,
     email varchar(100) UNIQUE,
-    phone varchar(12)
+    phone varchar(12),
+    CONSTRAINT customer_key PRIMARY KEY (id)
 );
 
 -- Relationship tables
 CREATE TABLE Supermarkets_Customers (
-    id serial PRIMARY KEY,
+    id serial,
     supermarket_id smallint NOT NULL,
     customer_id int NOT NULL,
+    CONSTRAINT sup_cust_key PRIMARY KEY (id),
     FOREIGN KEY (supermarket_id) REFERENCES Supermarkets(id),
     FOREIGN KEY (customer_id) REFERENCES Customers(id)
 );
