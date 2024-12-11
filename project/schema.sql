@@ -199,10 +199,12 @@ CREATE INDEX idx_reviews_date ON Reviews (date);
 CREATE ROLE analyst LOGIN PASSWORD 'password_analyst';
 CREATE ROLE manager LOGIN PASSWORD 'password_manager';
 CREATE ROLE operator LOGIN PASSWORD 'password_operator';
+CREATE ROLE user LOGIN PASSWORD 'password_user';
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst;
 GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO manager;
 GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA public TO operator;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO user;
 
 -- Views for common queries
 CREATE VIEW vw_top_selling_products AS
