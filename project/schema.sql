@@ -204,7 +204,11 @@ CREATE ROLE user LOGIN PASSWORD 'password_user';
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst;
 GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO manager;
 GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA public TO operator;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO user;
+GRANT SELECT ON Products TO user;
+GRANT SELECT ON Categories TO user;
+GRANT SELECT ON Trademarks TO user;
+GRANT SELECT ON Promotions TO user;
+GRANT SELECT ON Price_History TO user;
 
 -- Views for common queries
 CREATE VIEW vw_top_selling_products AS
