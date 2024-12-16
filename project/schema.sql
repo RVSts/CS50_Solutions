@@ -243,3 +243,35 @@ JOIN
     Products p ON sp.product_id = p.id
 ORDER BY
     c.id, s.date_time;
+
+CREATE VIEW vw_active_promotions AS
+SELECT
+    p.name AS product_name,
+    pr.type AS promotion_type,
+    pr.price AS promotion_price,
+    pr.starting_date,
+    pr.ending_date,
+    pr.is_active
+FROM
+    Promotions pr
+JOIN
+    Products p ON pr.product_id = p.id
+WHERE
+    pr.is_active = TRUE;
+
+GRANT SELECT ON vw_active_promotions TO user;
+
+
+CREATE VIEW vw_products_sales AS
+SELECT
+    p.name AS product_name,
+    SUM(sp.quantity) AS total_quantity_sold,
+    SUM(sp.quantity * sp.unit_price) AS total_revenue
+FROM
+    Sales_Products sp
+JOIN
+    Products p ON sp.product_id = p.id
+GROUP BY
+    p.name;
+
+GRANT SELECT ON vw_products_sales TO user;
