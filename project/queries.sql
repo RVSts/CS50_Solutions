@@ -224,7 +224,7 @@ INSERT INTO Categories (name) VALUES
 ('Snacks');
 
 -- Insert data into Trademarks
-INSERT INTO Trademarks (name, supplier_id) VALUES
+INSERT INTO Trademarks (id, name, supplier_id) VALUES
 ('Trademark A', 1),
 ('Trademark B', 2),
 ('Trademark C', 3);
