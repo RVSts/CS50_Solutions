@@ -53,3 +53,4 @@ CREATE TABLE `connections_companies`
     FOREIGN KEY(`person_id`) REFERENCES TO `users`(`id`),
     PRIMARY KEY(`company_id`) REFERENCES TO `companies`(`id`),
     PRIMARY KEY (`id`);
+    
