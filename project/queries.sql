@@ -205,15 +205,15 @@ ORDER BY
     s.name ASC;
 
 -- Insert data into Supermarkets
-INSERT INTO Supermarkets (id, name, address) VALUES
-(1, 'Supermarket A', '123 Market St, Cityville'),
-(2, 'Supermarket B', '456 Elm St, Townsville');
+INSERT INTO Supermarkets (name, address) VALUES
+('Supermarket A', '123 Market St, Cityville'),
+('Supermarket B', '456 Elm St, Townsville');
 
 -- Insert data into Suppliers
-INSERT INTO Suppliers (id, name) VALUES
-(1, 'Supplier X'),
-(2, 'Supplier Y'),
-(3, 'Supplier Z');
+INSERT INTO Suppliers (name) VALUES
+('Supplier X'),
+('Supplier Y'),
+('Supplier Z');
 
 -- Insert data into Categories
 INSERT INTO Categories (name) VALUES
@@ -224,7 +224,7 @@ INSERT INTO Categories (name) VALUES
 ('Snacks');
 
 -- Insert data into Trademarks
-INSERT INTO Trademarks (id, name, supplier_id) VALUES
+INSERT INTO Trademarks (name, supplier_id) VALUES
 ('Trademark A', 1),
 ('Trademark B', 2),
 ('Trademark C', 3);
