@@ -1,4 +1,4 @@
-# Design Document
+# Supermarket Database
 
 ### By Rian Vasconcelos dos Santos
 
