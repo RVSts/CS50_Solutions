@@ -275,3 +275,61 @@ GROUP BY
     p.name;
 
 GRANT SELECT ON vw_products_sales TO user;
+
+
+-- Trigger: Update `updated_at` column before any update on Products table
+CREATE TRIGGER trg_update_product_timestamp
+BEFORE UPDATE ON Products
+FOR EACH ROW
+BEGIN
+    NEW.updated_at = NOW();
+END;
+
+-- Trigger: Prevent negative stock in Products table
+CREATE TRIGGER trg_check_product_stock
+BEFORE UPDATE OR INSERT ON Products
+FOR EACH ROW
+BEGIN
+    IF NEW.quantity < 0 THEN
+        RAISE EXCEPTION 'Quantity cannot be negative';
+    END IF;
+END;
+
+-- Trigger: Log price changes in Products table
+CREATE TRIGGER trg_log_price_change
+AFTER UPDATE OF price ON Products
+FOR EACH ROW
+WHEN (OLD.price IS DISTINCT FROM NEW.price)
+BEGIN
+    INSERT INTO Price_History (price, date_time, product_id, is_active)
+    VALUES (NEW.price, NOW(), NEW.id, TRUE);
+END;
+
+-- Trigger: Automatically deactivate expired promotions
+CREATE TRIGGER trg_deactivate_expired_promotions
+BEFORE INSERT OR UPDATE ON Promotions
+FOR EACH ROW
+BEGIN
+    IF NEW.ending_date < NOW() THEN
+        NEW.is_active = FALSE;
+    END IF;
+END;
+
+-- Trigger: Enforce date consistency for Employees table
+CREATE TRIGGER trg_check_employee_dates
+BEFORE INSERT OR UPDATE ON Employees
+FOR EACH ROW
+BEGIN
+    IF NEW.ending_date IS NOT NULL AND NEW.ending_date < NEW.starting_date THEN
+        RAISE EXCEPTION 'Ending date cannot be before the starting date';
+    END IF;
+END;
+
+-- Trigger: Log customer reviews automatically
+CREATE TRIGGER trg_log_review
+AFTER INSERT ON Reviews
+FOR EACH ROW
+BEGIN
+    INSERT INTO Reviews (date, rate, comment, customer_id, supermarket_id)
+    VALUES (NOW(), NEW.rate, NEW.comment, NEW.customer_id, NEW.supermarket_id);
+END;
