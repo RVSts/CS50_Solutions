@@ -252,7 +252,7 @@ Sales summary by product.
 
 ### Roles and Permissions
 
-* Admin
+#### Admin
 - **Access**: Full access to all data and functionalities.
 - **Responsibilities**:
   - Manage database structure.
