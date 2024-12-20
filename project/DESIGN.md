@@ -208,27 +208,26 @@ Stores customer reviews about supermarkets.
 ---
 ### Views
 
-* vw_top_selling_products
+#### vw_top_selling_products
 Lists top-selling products.
 - **Columns**: `product_name`, `total_quantity_sold`
 - **Ordering**: Descending by total sold.
 
-* vw_customer_purchase_history
+#### vw_customer_purchase_history
 Purchase history by customer.
 - **Columns**: `customer_id`, `first_name`, `last_name`, `purchase_date`, `product_name`, `quantity`, `unit_price`
 - **Ordering**: By customer and date.
 
-* vw_active_promotions
+#### vw_active_promotions
 Lists active promotions.
 - **Columns**: `product_name`, `promotion_type`, `promotion_price`, `starting_date`, `ending_date`, `is_active`
 - **Permissions**: Accessible by the `User` role.
 
-* vw_products_sales
+#### vw_products_sales
 Sales summary by product.
 - **Columns**: `product_name`, `total_quantity_sold`, `total_revenue`
 - **Permissions**: Accessible by the `User` role.
 
----
 
 ### Triggers
 
@@ -251,30 +250,28 @@ Sales summary by product.
   Logs customer reviews in the `Reviews` table, ensuring no duplicate reviews for the same `customer_id` and `supermarket_id`.
 
 
----
+### Roles and Permissions
 
-## Roles and Permissions
-
-### Admin
+* Admin
 - **Access**: Full access to all data and functionalities.
 - **Responsibilities**:
   - Manage database structure.
   - Assign roles to users.
   - Oversee system health and data integrity.
 
-### Supermarket_Manager
+#### Supermarket_Manager
 - **Access**: Restricted to supermarket-related data.
 - **Responsibilities**:
   - Manage product and promotion details.
   - Monitor sales performance and employee data.
 
-### Customer
+#### Customer
 - **Access**: Limited to their own purchase history and review submissions.
 - **Responsibilities**:
   - Provide feedback and reviews for supermarkets.
   - View their transaction details.
 
-### Analyst
+#### Analyst
 - **Access**: Read-only access to analytics and aggregated data.
 - **Responsibilities**:
   - Generate reports on trends, sales, and customer behavior.
