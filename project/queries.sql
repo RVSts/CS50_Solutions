@@ -204,6 +204,26 @@ WHERE
 ORDER BY
     s.name ASC;
 
+
+-- Alter tables to reset sequences for 'serial' and 'smallserial' columns
+ALTER SEQUENCE supermarkets_id_seq RESTART WITH 1;
+ALTER SEQUENCE suppliers_id_seq RESTART WITH 1;
+ALTER SEQUENCE categories_id_seq RESTART WITH 1;
+ALTER SEQUENCE trademarks_id_seq RESTART WITH 1;
+ALTER SEQUENCE customers_id_seq RESTART WITH 1;
+ALTER SEQUENCE supermarkets_customers_id_seq RESTART WITH 1;
+ALTER SEQUENCE supermarket_supplier_id_seq RESTART WITH 1;
+ALTER SEQUENCE products_id_seq RESTART WITH 1;
+ALTER SEQUENCE price_history_id_seq RESTART WITH 1;
+ALTER SEQUENCE departments_id_seq RESTART WITH 1;
+ALTER SEQUENCE job_titles_id_seq RESTART WITH 1;
+ALTER SEQUENCE employees_id_seq RESTART WITH 1;
+ALTER SEQUENCE promotions_id_seq RESTART WITH 1;
+ALTER SEQUENCE sales_id_seq RESTART WITH 1;
+ALTER SEQUENCE sales_products_id_seq RESTART WITH 1;
+ALTER SEQUENCE reviews_id_seq RESTART WITH 1;
+
+
 -- Insert data into Supermarkets
 INSERT INTO Supermarkets (name, address) VALUES
 ('Supermarket A', '123 Market St, Cityville'),
