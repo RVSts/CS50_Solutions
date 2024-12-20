@@ -277,7 +277,7 @@ GROUP BY
 GRANT SELECT ON vw_products_sales TO user_;
 
 
--- Atualiza o campo `updated_at` antes de qualquer atualização em `Products`
+-- Updates the `updated_at` field before any update in `Products`
 CREATE OR REPLACE FUNCTION trg_update_product_timestamp_fn()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -291,8 +291,7 @@ BEFORE UPDATE ON Products
 FOR EACH ROW
 EXECUTE FUNCTION trg_update_product_timestamp_fn();
 
-
--- Impede quantidade negativa no estoque de `Products`
+-- Prevents negative stock quantity in `Products`
 CREATE OR REPLACE FUNCTION trg_check_product_stock_fn()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -308,8 +307,7 @@ BEFORE UPDATE OR INSERT ON Products
 FOR EACH ROW
 EXECUTE FUNCTION trg_check_product_stock_fn();
 
-
--- Log de mudanças de preço em `Products`
+-- Logs price changes in `Products`
 CREATE OR REPLACE FUNCTION trg_log_price_change_fn()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -325,8 +323,7 @@ FOR EACH ROW
 WHEN (OLD.price IS DISTINCT FROM NEW.price)
 EXECUTE FUNCTION trg_log_price_change_fn();
 
-
--- Desativa automaticamente promoções expiradas
+-- Automatically deactivates expired promotions
 CREATE OR REPLACE FUNCTION trg_deactivate_expired_promotions_fn()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -342,8 +339,7 @@ BEFORE INSERT OR UPDATE ON Promotions
 FOR EACH ROW
 EXECUTE FUNCTION trg_deactivate_expired_promotions_fn();
 
-
--- Enforce consistência de datas no `Employees`
+-- Ensures consistency of dates in `Employees`
 CREATE OR REPLACE FUNCTION trg_check_employee_dates_fn()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -359,8 +355,7 @@ BEFORE INSERT OR UPDATE ON Employees
 FOR EACH ROW
 EXECUTE FUNCTION trg_check_employee_dates_fn();
 
-
--- Log de avaliações de clientes em `Reviews`
+-- Logs customer reviews in `Reviews`
 CREATE OR REPLACE FUNCTION trg_log_review_fn()
 RETURNS TRIGGER AS $$
 BEGIN
