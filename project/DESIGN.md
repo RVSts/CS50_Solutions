@@ -206,24 +206,24 @@ Stores customer reviews about supermarkets.
 4. Additional indexes on `Products`, `Promotions`, `Employees`, and `Reviews` for query optimization.
 
 ---
-## Views
+### Views
 
-### vw_top_selling_products
+* vw_top_selling_products
 Lists top-selling products.
 - **Columns**: `product_name`, `total_quantity_sold`
 - **Ordering**: Descending by total sold.
 
-### vw_customer_purchase_history
+* vw_customer_purchase_history
 Purchase history by customer.
 - **Columns**: `customer_id`, `first_name`, `last_name`, `purchase_date`, `product_name`, `quantity`, `unit_price`
 - **Ordering**: By customer and date.
 
-### vw_active_promotions
+* vw_active_promotions
 Lists active promotions.
 - **Columns**: `product_name`, `promotion_type`, `promotion_price`, `starting_date`, `ending_date`, `is_active`
 - **Permissions**: Accessible by the `User` role.
 
-### vw_products_sales
+* vw_products_sales
 Sales summary by product.
 - **Columns**: `product_name`, `total_quantity_sold`, `total_revenue`
 - **Permissions**: Accessible by the `User` role.
