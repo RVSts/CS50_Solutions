@@ -203,3 +203,103 @@ WHERE
     ss.supermarket_id = 1
 ORDER BY
     s.name ASC;
+
+-- Insert data into Supermarkets
+INSERT INTO Supermarkets (name, address) VALUES
+('Supermarket A', '123 Market St, Cityville'),
+('Supermarket B', '456 Elm St, Townsville');
+
+-- Insert data into Suppliers
+INSERT INTO Suppliers (name) VALUES
+('Supplier X'),
+('Supplier Y'),
+('Supplier Z');
+
+-- Insert data into Categories
+INSERT INTO Categories (name) VALUES
+('Fruits'),
+('Vegetables'),
+('Dairy'),
+('Beverages'),
+('Snacks');
+
+-- Insert data into Trademarks
+INSERT INTO Trademarks (name, supplier_id) VALUES
+('Trademark A', 1),
+('Trademark B', 2),
+('Trademark C', 3);
+
+-- Insert data into Products
+INSERT INTO Products (name, price, quantity, product_weight, unit_of_measure, expiration_date, created_at, updated_at, trademark_id, category_id, supermarket_id) VALUES
+('Apple', 2.50, 100, 0.15, 'kg', '2025-12-31', NOW(), NOW(), 1, 1, 1),
+('Banana', 1.80, 150, 0.12, 'kg', '2025-12-25', NOW(), NOW(), 1, 1, 1),
+('Milk', 1.20, 200, 1.00, 'l', '2024-12-25', NOW(), NOW(), 2, 3, 1),
+('Coke', 3.00, 120, 0.50, 'l', '2026-12-31', NOW(), NOW(), 3, 4, 2),
+('Chips', 1.50, 180, 0.200, 'unit', '2025-11-30', NOW(), NOW(), 3, 5, 2);
+
+-- Insert data into Price_History (for logging price changes)
+INSERT INTO Price_History (price, date_time, product_id, is_active) VALUES
+(2.50, '2024-12-10 10:00:00', 1, TRUE),
+(1.80, '2024-12-11 10:00:00', 2, TRUE),
+(1.20, '2024-12-12 10:00:00', 3, TRUE),
+(3.00, '2024-12-13 10:00:00', 4, TRUE),
+(1.50, '2024-12-14 10:00:00', 5, TRUE);
+
+-- Insert data into Departments
+INSERT INTO Departments (name, supermarket_id) VALUES
+('Produce', 1),
+('Beverages', 1),
+('Snacks', 2);
+
+-- Insert data into Job_Titles
+INSERT INTO Job_Titles (name, department_id) VALUES
+('Manager', 1),
+('Cashier', 2),
+('Stock Clerk', 3);
+
+-- Insert data into Employees
+INSERT INTO Employees (first_name, last_name, job_title_id, starting_date, ending_date, supermarket_id, department_id) VALUES
+('John', 'Doe', 1, '2024-01-01', NULL, 1, 1),
+('Jane', 'Smith', 2, '2024-02-01', NULL, 1, 2),
+('Tom', 'Jones', 3, '2024-03-01', NULL, 2, 3);
+
+-- Insert data into Customers
+INSERT INTO Customers (first_name, last_name, username, email, phone) VALUES
+('Alice', 'Johnson', 'alicej', 'alice@example.com', '1234567890'),
+('Bob', 'Williams', 'bobw', 'bob@example.com', '0987654321');
+
+-- Insert data into Supermarkets_Customers
+INSERT INTO Supermarkets_Customers (supermarket_id, customer_id) VALUES
+(1, 1),
+(1, 2);
+
+-- Insert data into Supermarket_Supplier
+INSERT INTO Supermarket_Supplier (supermarket_id, supplier_id) VALUES
+(1, 1),
+(1, 2),
+(2, 3);
+
+-- Insert data into Promotions
+INSERT INTO Promotions (type, price, starting_date, ending_date, supermarket_id, trademark_id, product_id, is_active) VALUES
+('discount', 1.00, '2024-12-15 08:00:00', '2024-12-20 20:00:00', 1, 1, 1, TRUE),
+('bundle', 3.50, '2024-12-16 08:00:00', '2024-12-30 20:00:00', 2, 3, 4, TRUE);
+
+-- Insert data into Sales
+INSERT INTO Sales (date_time, customer_id) VALUES
+('2024-12-15 09:30:00', 1),
+('2024-12-16 10:00:00', 2);
+
+-- Insert data into Sales_Products
+INSERT INTO Sales_Products (date_time, sales_id, product_id, quantity, unit_price) VALUES
+('2024-12-15 09:30:00', 1, 1, 2, 2.50),
+('2024-12-16 10:00:00', 2, 3, 3, 1.20);
+
+-- Insert data into Reviews
+INSERT INTO Reviews (date, rate, comment, customer_id, supermarket_id) VALUES
+('2024-12-16 11:00:00', 5, 'Great service!', 1, 1),
+('2024-12-17 12:00:00', 4, 'Good quality products, but a bit pricey.', 2, 2);
+
+-- Insert data into Promotions_Products for active promotions
+INSERT INTO Promotions (type, price, starting_date, ending_date, supermarket_id, trademark_id, product_id, is_active) VALUES
+('discount', 2.00, '2024-12-18 10:00:00', '2024-12-20 10:00:00', 1, 1, 1, TRUE),
+('bundle', 5.00, '2024-12-15 10:00:00', '2024-12-25 20:00:00', 2, 3, 4, TRUE);
