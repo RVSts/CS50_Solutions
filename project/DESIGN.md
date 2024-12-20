@@ -197,6 +197,14 @@ Stores customer reviews about supermarkets.
 
 ---
 
+# Relationships
+
+The entity relationship diagram below describes the relationships between entities in my database.
+
+![alt text](<supermarkets project.png>)
+
+---
+
 ## Optimizations
 
 ### Indexes
