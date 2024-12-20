@@ -230,6 +230,29 @@ Sales summary by product.
 
 ---
 
+### Triggers
+
+- **`trg_update_product_timestamp`**
+  Updates the `updated_at` field to the current timestamp before any update in the `Products` table.
+
+- **`trg_check_product_stock`**
+  Prevents negative stock quantity in the `Products` table by raising an exception if `quantity < 0`.
+
+- **`trg_log_price_change`**
+  Logs price changes for products into the `Price_History` table after updates to the `price` field in the `Products` table.
+
+- **`trg_deactivate_expired_promotions`**
+  Automatically deactivates promotions by setting `is_active` to `FALSE` if the `ending_date` is in the past.
+
+- **`trg_check_employee_dates`**
+  Ensures consistency in the `Employees` table by verifying that the `ending_date` is not earlier than the `starting_date`.
+
+- **`trg_log_review`**
+  Logs customer reviews in the `Reviews` table, ensuring no duplicate reviews for the same `customer_id` and `supermarket_id`.
+
+
+---
+
 ## Roles and Permissions
 
 ### Admin
@@ -272,4 +295,3 @@ Sales summary by product.
 
 4. **Historical Constraints**:
    - Price history is recorded only from the moment a product is added to the database.
-   
