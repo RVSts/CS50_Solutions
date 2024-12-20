@@ -364,8 +364,14 @@ EXECUTE FUNCTION trg_check_employee_dates_fn();
 CREATE OR REPLACE FUNCTION trg_log_review_fn()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO Reviews (date, rate, comment, customer_id, supermarket_id)
-    VALUES (NOW(), NEW.rate, NEW.comment, NEW.customer_id, NEW.supermarket_id);
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Reviews
+        WHERE customer_id = NEW.customer_id AND supermarket_id = NEW.supermarket_id
+    ) THEN
+        INSERT INTO Reviews (date, rate, comment, customer_id, supermarket_id)
+        VALUES (NOW(), NEW.rate, NEW.comment, NEW.customer_id, NEW.supermarket_id);
+    END IF;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
