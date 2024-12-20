@@ -199,16 +199,16 @@ CREATE INDEX idx_reviews_date ON Reviews (date);
 CREATE ROLE analyst LOGIN PASSWORD 'password_analyst';
 CREATE ROLE manager LOGIN PASSWORD 'password_manager';
 CREATE ROLE operator LOGIN PASSWORD 'password_operator';
-CREATE ROLE user LOGIN PASSWORD 'password_user';
+CREATE ROLE user_ LOGIN PASSWORD 'password_user';
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst;
 GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO manager;
 GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA public TO operator;
-GRANT SELECT ON Products TO user;
-GRANT SELECT ON Categories TO user;
-GRANT SELECT ON Trademarks TO user;
-GRANT SELECT ON Promotions TO user;
-GRANT SELECT ON Price_History TO user;
+GRANT SELECT ON Products TO user_;
+GRANT SELECT ON Categories TO user_;
+GRANT SELECT ON Trademarks TO user_;
+GRANT SELECT ON Promotions TO user_;
+GRANT SELECT ON Price_History TO user_;
 
 -- Views for common queries
 CREATE VIEW vw_top_selling_products AS
@@ -259,7 +259,7 @@ JOIN
 WHERE
     pr.is_active = TRUE;
 
-GRANT SELECT ON vw_active_promotions TO user;
+GRANT SELECT ON vw_active_promotions TO user_;
 
 
 CREATE VIEW vw_products_sales AS
@@ -274,62 +274,103 @@ JOIN
 GROUP BY
     p.name;
 
-GRANT SELECT ON vw_products_sales TO user;
+GRANT SELECT ON vw_products_sales TO user_;
 
 
--- Trigger: Update `updated_at` column before any update on Products table
+-- Atualiza o campo `updated_at` antes de qualquer atualização em `Products`
+CREATE OR REPLACE FUNCTION trg_update_product_timestamp_fn()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE TRIGGER trg_update_product_timestamp
 BEFORE UPDATE ON Products
 FOR EACH ROW
-BEGIN
-    NEW.updated_at = NOW();
-END;
+EXECUTE FUNCTION trg_update_product_timestamp_fn();
 
--- Trigger: Prevent negative stock in Products table
-CREATE TRIGGER trg_check_product_stock
-BEFORE UPDATE OR INSERT ON Products
-FOR EACH ROW
+
+-- Impede quantidade negativa no estoque de `Products`
+CREATE OR REPLACE FUNCTION trg_check_product_stock_fn()
+RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.quantity < 0 THEN
         RAISE EXCEPTION 'Quantity cannot be negative';
     END IF;
+    RETURN NEW;
 END;
+$$ LANGUAGE plpgsql;
 
--- Trigger: Log price changes in Products table
+CREATE TRIGGER trg_check_product_stock
+BEFORE UPDATE OR INSERT ON Products
+FOR EACH ROW
+EXECUTE FUNCTION trg_check_product_stock_fn();
+
+
+-- Log de mudanças de preço em `Products`
+CREATE OR REPLACE FUNCTION trg_log_price_change_fn()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO Price_History (price, date_time, product_id, is_active)
+    VALUES (NEW.price, NOW(), NEW.id, TRUE);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE TRIGGER trg_log_price_change
 AFTER UPDATE OF price ON Products
 FOR EACH ROW
 WHEN (OLD.price IS DISTINCT FROM NEW.price)
-BEGIN
-    INSERT INTO Price_History (price, date_time, product_id, is_active)
-    VALUES (NEW.price, NOW(), NEW.id, TRUE);
-END;
+EXECUTE FUNCTION trg_log_price_change_fn();
 
--- Trigger: Automatically deactivate expired promotions
-CREATE TRIGGER trg_deactivate_expired_promotions
-BEFORE INSERT OR UPDATE ON Promotions
-FOR EACH ROW
+
+-- Desativa automaticamente promoções expiradas
+CREATE OR REPLACE FUNCTION trg_deactivate_expired_promotions_fn()
+RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.ending_date < NOW() THEN
         NEW.is_active = FALSE;
     END IF;
+    RETURN NEW;
 END;
+$$ LANGUAGE plpgsql;
 
--- Trigger: Enforce date consistency for Employees table
-CREATE TRIGGER trg_check_employee_dates
-BEFORE INSERT OR UPDATE ON Employees
+CREATE TRIGGER trg_deactivate_expired_promotions
+BEFORE INSERT OR UPDATE ON Promotions
 FOR EACH ROW
+EXECUTE FUNCTION trg_deactivate_expired_promotions_fn();
+
+
+-- Enforce consistência de datas no `Employees`
+CREATE OR REPLACE FUNCTION trg_check_employee_dates_fn()
+RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.ending_date IS NOT NULL AND NEW.ending_date < NEW.starting_date THEN
         RAISE EXCEPTION 'Ending date cannot be before the starting date';
     END IF;
+    RETURN NEW;
 END;
+$$ LANGUAGE plpgsql;
 
--- Trigger: Log customer reviews automatically
-CREATE TRIGGER trg_log_review
-AFTER INSERT ON Reviews
+CREATE TRIGGER trg_check_employee_dates
+BEFORE INSERT OR UPDATE ON Employees
 FOR EACH ROW
+EXECUTE FUNCTION trg_check_employee_dates_fn();
+
+
+-- Log de avaliações de clientes em `Reviews`
+CREATE OR REPLACE FUNCTION trg_log_review_fn()
+RETURNS TRIGGER AS $$
 BEGIN
     INSERT INTO Reviews (date, rate, comment, customer_id, supermarket_id)
     VALUES (NOW(), NEW.rate, NEW.comment, NEW.customer_id, NEW.supermarket_id);
+    RETURN NEW;
 END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_log_review
+AFTER INSERT ON Reviews
+FOR EACH ROW
+EXECUTE FUNCTION trg_log_review_fn();
