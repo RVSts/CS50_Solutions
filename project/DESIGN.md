@@ -203,6 +203,48 @@ The entity relationship diagram below describes the relationships between entiti
 
 ![alt text](<supermarkets project.png>)
 
+## Descriptions:
+
+1. **Supermarkets_Customers**: Many-to-Many. A supermarket can have many customers, and a customer can be associated with multiple supermarkets.
+
+2. **Supermarket_Supplier**: Many-to-Many. A supermarket can have many suppliers, and a supplier can supply to multiple supermarkets.
+
+3. **Trademarks → Suppliers**: Many-to-One. A trademark is associated with a single supplier, but a supplier can have multiple trademarks.
+
+4. **Products → Supermarkets**: Many-to-One. A product is linked to a single supermarket, but a supermarket can have multiple products.
+
+5. **Products → Trademarks**: Many-to-One. A product belongs to a single trademark, but a trademark can be associated with multiple products.
+
+6. **Products → Categories**: Many-to-One. A product belongs to a single category, but a category can include multiple products.
+
+7. **Price_History → Products**: Many-to-One. A price history record is linked to a single product, but a product can have multiple price history records.
+
+8. **Departments → Supermarkets**: Many-to-One. A department is linked to a single supermarket, but a supermarket can have multiple departments.
+
+9. **Job_Titles → Departments**: Many-to-One. A job title belongs to a single department, but a department can have multiple job titles.
+
+10. **Employees → Job_Titles**: Many-to-One. An employee has a single job title, but a job title can be held by multiple employees.
+
+11. **Employees → Departments**: Many-to-One. An employee works in a single department, but a department can have multiple employees.
+
+12. **Employees → Supermarkets**: Many-to-One. An employee works in a single supermarket, but a supermarket can employ multiple employees.
+
+13. **Promotions → Supermarkets**: Many-to-One. A promotion is tied to a single supermarket, but a supermarket can have multiple promotions.
+
+14. **Promotions → Trademarks**: Many-to-One. A promotion is associated with a single trademark, but a trademark can have multiple promotions.
+
+15. **Promotions → Products**: Many-to-One. A promotion is tied to a single product, but a product can have multiple promotions.
+
+16. **Sales → Customers**: Many-to-One. A sale is linked to a single customer, but a customer can make multiple sales.
+
+17. **Sales_Products → Sales**: Many-to-One. A sales-products record belongs to a single sale, but a sale can include multiple sales-products records.
+
+18. **Sales_Products → Products**: Many-to-One. A sales-products record is tied to a single product, but a product can appear in multiple sales-products records.
+
+19. **Reviews → Customers**: Many-to-One. A review is written by a single customer, but a customer can write multiple reviews.
+
+20. **Reviews → Supermarkets**: Many-to-One. A review is tied to a single supermarket, but a supermarket can receive multiple reviews.
+
 ---
 
 ## Optimizations
